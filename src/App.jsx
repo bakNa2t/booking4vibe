@@ -1,8 +1,13 @@
+import GlobalStyles from "./styles/GlobalStyles";
+
 function App() {
   return (
-    <div>
-      <h1>BookingSpot</h1>
-    </div>
+    <>
+      <GlobalStyles />
+      <div>
+        <h1>BookingSpot</h1>
+      </div>
+    </>
   );
 }
 
