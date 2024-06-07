@@ -7,6 +7,7 @@ import Input from "./ui-blocks/Input";
 
 const StyledApp = styled.main`
   background-color: var(--color-emerald-200);
+  padding: 2rem 10rem;
 `;
 
 function App() {
@@ -14,8 +15,11 @@ function App() {
     <>
       <GlobalStyles />
       <StyledApp>
-        <Heading>BookingSpot</Heading>
-        <Button>Click me</Button>
+        <Heading as="h1">Booking For Vibe</Heading>
+        <Heading as="h2">Check-in and -out </Heading>
+        <Button>Check in</Button>
+        <Button>Check out</Button>
+        <Heading as="h3">Forms input</Heading>
         <Input type="number" placeholder="Enter your phone" />
       </StyledApp>
     </>
