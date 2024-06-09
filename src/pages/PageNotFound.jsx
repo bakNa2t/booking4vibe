@@ -27,7 +27,7 @@ const Box = styled.div`
   }
 `;
 
-function PageNorFound() {
+function PageNotFound() {
   const goBack = useGoBack();
 
   return (
@@ -44,4 +44,4 @@ function PageNorFound() {
   );
 }
 
-export default PageNorFound;
+export default PageNotFound;
