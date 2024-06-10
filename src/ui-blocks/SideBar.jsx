@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 const StyledSideBar = styled.aside`
-  background-color: var(--color-indigo-100);
+  background-color: var(--color-emerald-0);
   padding: 2rem 4rem;
-  border-bottom: 1px solid var(--color-indigo-100);
+  border-right: 1px solid var(--color-emerald-200);
+
+  grid-row: 1 / -1;
 `;
 
 function SideBar() {

@@ -3,20 +3,27 @@ import SideBar from "./SideBar";
 import Header from "./Header";
 import styled from "styled-components";
 
+const StyledAppLayout = styled.div`
+  display: grid;
+  grid-template-columns: 24rem 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+`;
+
 const Main = styled.main`
-  background-color: var(--color-emerald-100);
+  background-color: var(--color-emerald-50);
   padding: 5rem 8rem;
 `;
 
 function AppLayout() {
   return (
-    <div>
+    <StyledAppLayout>
       <Header />
       <SideBar />
       <Main>
         <Outlet />
       </Main>
-    </div>
+    </StyledAppLayout>
   );
 }
 
