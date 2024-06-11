@@ -33,7 +33,7 @@ const StyledLink = styled(NavLink)`
   &.active:link,
   &.active:visited {
     color: var(--color-emerald-800);
-    background-color: var(--color-emerald-50);
+    background-color: var(--color-emerald-100);
     border-radius: var(--border-radius-sm);
   }
 
