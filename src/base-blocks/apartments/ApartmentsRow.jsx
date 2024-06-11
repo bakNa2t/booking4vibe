@@ -12,7 +12,7 @@ const TableRow = styled.div`
   background-color: var(--color-emerald-100);
 
   &:not(:last-child) {
-    border-bottom: 1px solid var(--color-emerald-100);
+    border-bottom: 1px solid var(--color-emerald-200);
   }
 `;
 
