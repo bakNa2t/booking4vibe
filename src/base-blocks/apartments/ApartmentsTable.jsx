@@ -1,7 +1,12 @@
+import { useQuery } from "@tanstack/react-query";
+import { getApartments } from "../../services/apiApartments";
+
 import styled from "styled-components";
+import Spinner from "../../ui-blocks/Spinner";
+import ApartmentsRow from "./ApartmentsRow";
 
 const Table = styled.div`
-  border: 1px solid var(--color-grey-200);
+  border: 1px solid var(--color-emerald-200);
 
   font-size: 1.4rem;
   background-color: var(--color-grey-0);
@@ -25,13 +30,32 @@ const TableHeader = styled.header`
 `;
 
 function ApartmentsTable() {
+  const {
+    isLoading,
+    data: apartments,
+    error,
+  } = useQuery({
+    queryKey: ["apartment"],
+    queryFn: getApartments,
+  });
+
+  if (isLoading) return <Spinner />;
+
+  console.log(apartments, error);
+
   return (
-    <Table>
-      <TableHeader>
+    <Table role="table">
+      <TableHeader role="row">
+        <div></div>
         <div>Apartment</div>
-        <div>Location</div>
+        <div>Capacity</div>
         <div>Price</div>
+        <div>Discount</div>
+        <div></div>
       </TableHeader>
+      {apartments.map((apartment) => (
+        <ApartmentsRow key={apartment.id} apartment={apartment} />
+      ))}
     </Table>
   );
 }
