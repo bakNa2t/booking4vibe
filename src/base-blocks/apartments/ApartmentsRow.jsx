@@ -1,6 +1,8 @@
 import { formatCurrency } from "../../utils/utilsFunctions";
-import styled from "styled-components";
+import { deleteApartment } from "../../services/apiApartments";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
+import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const TableRow = styled.div`
@@ -48,7 +50,28 @@ function ApartmentsRow({ apartment }) {
     apartment: PropTypes.object.isRequired,
   };
 
-  const { image, name, maxCapacity, regularPrice, discount } = apartment;
+  const {
+    id: apartmentId,
+    image,
+    name,
+    maxCapacity,
+    regularPrice,
+    discount,
+  } = apartment;
+
+  const queryClient = useQueryClient();
+
+  const { isLoading: isDeleting, mutate } = useMutation({
+    mutationFn: deleteApartment,
+    onSuccess: () => {
+      alert("Apartment deleted successfully");
+
+      queryClient.invalidateQueries({
+        queryKey: ["apartments"],
+      });
+    },
+    onError: (err) => alert(err.message),
+  });
 
   return (
     <TableRow role="row">
@@ -57,7 +80,9 @@ function ApartmentsRow({ apartment }) {
       <div>Fits up to {maxCapacity} guests</div>
       <Price>{formatCurrency(regularPrice)}</Price>
       <Discount>{formatCurrency(discount)}</Discount>
-      <button>Delete</button>
+      <button onClick={() => mutate(apartmentId)} disabled={isDeleting}>
+        Delete
+      </button>
     </TableRow>
   );
 }

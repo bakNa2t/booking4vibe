@@ -35,7 +35,7 @@ function ApartmentsTable() {
     data: apartments,
     error,
   } = useQuery({
-    queryKey: ["apartment"],
+    queryKey: ["apartments"],
     queryFn: getApartments,
   });
 
