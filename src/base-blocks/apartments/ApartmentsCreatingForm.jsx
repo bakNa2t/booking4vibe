@@ -29,7 +29,7 @@ function ApartmentCreatingForm() {
   });
 
   function onSubmit(data) {
-    mutate({ ...data, image: data.image.at[0] });
+    mutate({ ...data, image: data.image[0] });
   }
 
   // Monitoring error during form submission. Add to second arg of onSubmit
