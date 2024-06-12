@@ -10,8 +10,19 @@ import FileInput from "../../ui-blocks/FileInput";
 import Textarea from "../../ui-blocks/Textarea";
 import FormRow from "../../ui-blocks/FormRow";
 
-function ApartmentCreatingForm() {
-  const { register, handleSubmit, reset, getValues, formState } = useForm();
+import PropTypes from "prop-types";
+
+function ApartmentCreatingForm({ apartmentToEditing = {} }) {
+  ApartmentCreatingForm.propTypes = {
+    apartmentToEditing: PropTypes.object,
+  };
+
+  const { id: editId, ...editValues } = apartmentToEditing;
+  const isEditingSession = Boolean(editId);
+
+  const { register, handleSubmit, reset, getValues, formState } = useForm({
+    defaultValues: isEditingSession ? editValues : {},
+  });
   const { errors } = formState;
 
   const queryClient = useQueryClient();
@@ -123,7 +134,9 @@ function ApartmentCreatingForm() {
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
-        <Button disabled={isCreating}>Add apartment</Button>
+        <Button disabled={isCreating}>
+          {isEditingSession ? "Edit apartment" : "Add apartment"}
+        </Button>
       </FormRow>
     </Form>
   );

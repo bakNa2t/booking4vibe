@@ -1,9 +1,11 @@
 import { formatCurrency } from "../../utils/utilsFunctions";
 import { deleteApartment } from "../../services/apiApartments";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
 
 import toast from "react-hot-toast";
 import styled from "styled-components";
+import ApartmentsCreatingForm from "./ApartmentsCreatingForm";
 import PropTypes from "prop-types";
 
 const TableRow = styled.div`
@@ -51,6 +53,8 @@ function ApartmentsRow({ apartment }) {
     apartment: PropTypes.object.isRequired,
   };
 
+  const [showForm, setShowForm] = useState(false);
+
   const {
     id: apartmentId,
     image,
@@ -75,16 +79,24 @@ function ApartmentsRow({ apartment }) {
   });
 
   return (
-    <TableRow role="row">
-      <Img src={image} />
-      <Apartment>{name}</Apartment>
-      <div>Fits up to {maxCapacity} guests</div>
-      <Price>{formatCurrency(regularPrice)}</Price>
-      <Discount>{formatCurrency(discount)}</Discount>
-      <button onClick={() => mutate(apartmentId)} disabled={isDeleting}>
-        Delete
-      </button>
-    </TableRow>
+    <>
+      <TableRow role="row">
+        <Img src={image} />
+        <Apartment>{name}</Apartment>
+        <div>Fits up to {maxCapacity} guests</div>
+        <Price>{formatCurrency(regularPrice)}</Price>
+        <Discount>{formatCurrency(discount)}</Discount>
+
+        <div>
+          <button onClick={() => setShowForm(!showForm)}>Edit</button>
+          <button onClick={() => mutate(apartmentId)} disabled={isDeleting}>
+            Delete
+          </button>
+        </div>
+      </TableRow>
+
+      {showForm && <ApartmentsCreatingForm apartmentToEditing={apartment} />}
+    </>
   );
 }
 
