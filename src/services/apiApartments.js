@@ -11,6 +11,19 @@ export async function getApartments() {
   return data;
 }
 
+export async function createApartment(newApartment) {
+  const { data, error } = await supabase
+    .from("apartments")
+    .insert(newApartment)
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Apartment could not be created");
+  }
+  return data;
+}
+
 export async function deleteApartment(id) {
   const { data, error } = await supabase
     .from("apartments")
