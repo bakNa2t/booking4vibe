@@ -41,7 +41,7 @@ function ApartmentsTable() {
 
   if (isLoading) return <Spinner />;
 
-  console.log(apartments, error);
+  console.log(error);
 
   return (
     <Table role="table">
