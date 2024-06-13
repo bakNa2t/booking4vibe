@@ -85,7 +85,11 @@ function ApartmentsRow({ apartment }) {
         <Apartment>{name}</Apartment>
         <div>Fits up to {maxCapacity} guests</div>
         <Price>{formatCurrency(regularPrice)}</Price>
-        <Discount>{formatCurrency(discount)}</Discount>
+        {discount ? (
+          <Discount>{formatCurrency(discount)}</Discount>
+        ) : (
+          <span>&mdash;</span>
+        )}
 
         <div>
           <button onClick={() => setShowForm(!showForm)}>Edit</button>
