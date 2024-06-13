@@ -11,19 +11,33 @@ export async function getApartments() {
   return data;
 }
 
-export async function createApartment(newApartment) {
-  const imageName = `${Math.random()} - ${newApartment.image.name}`.replace(
+export async function createEditApartment(newApartment, id) {
+  const hasImagePath = newApartment.image?.startsWith?.(supabaseUrl);
+
+  const imageName = `${Math.random()} - ${newApartment.image.name}`.replaceAll(
     "/",
     ""
   );
 
-  const imagePath = `${supabaseUrl}/storage/v1/object/public/apartment-images/${imageName}`;
+  const imagePath = hasImagePath
+    ? newApartment.image
+    : `${supabaseUrl}/storage/v1/object/public/apartment-images/${imageName}`;
 
-  // Add new apartment row to table
-  const { data, error } = await supabase
-    .from("apartments")
-    .insert({ ...newApartment, image: imagePath })
-    .select();
+  // Edit or add new apartment row to table
+  let query = supabase.from("apartments");
+  //add
+  if (!id) query = query.insert([{ ...newApartment, image: imagePath }]);
+  //edit
+  if (id)
+    query = query.update({ ...newApartment, image: imagePath }).eq("id", id);
+
+  const { data, error } = await query.select().single();
+
+  // const { data, error } = await supabase
+  //   .from("apartments")
+  //   .insert({ ...newApartment, image: imagePath })
+  //   .select()
+  //   .single();
 
   if (error) {
     console.error(error);

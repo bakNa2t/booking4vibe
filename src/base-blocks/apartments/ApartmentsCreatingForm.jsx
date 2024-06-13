@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createApartment } from "../../services/apiApartments";
+import { createEditApartment } from "../../services/apiApartments";
 
 import toast from "react-hot-toast";
 import Input from "../../ui-blocks/Input";
@@ -27,10 +27,11 @@ function ApartmentCreatingForm({ apartmentToEditing = {} }) {
 
   const queryClient = useQueryClient();
 
-  const { mutate, isLoading: isCreating } = useMutation({
-    mutationFn: createApartment,
+  //Create new apartment
+  const { mutate: createApartment, isLoading: isCreating } = useMutation({
+    mutationFn: createEditApartment,
     onSuccess: () => {
-      toast.success("New partment created successfully");
+      toast.success("New apartment created successfully");
       queryClient.invalidateQueries({
         queryKey: ["apartments"],
       });
@@ -39,8 +40,28 @@ function ApartmentCreatingForm({ apartmentToEditing = {} }) {
     onError: (err) => toast.error(err.message),
   });
 
+  //Edit existing apartment
+  const { mutate: editApartment, isLoading: isEditing } = useMutation({
+    mutationFn: ({ newApartmentData, id }) =>
+      createEditApartment(newApartmentData, id),
+    onSuccess: () => {
+      toast.success("Apartment updated successfully");
+      queryClient.invalidateQueries({
+        queryKey: ["apartments"],
+      });
+      reset();
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  const isWorking = isCreating || isEditing;
+
   function onSubmit(data) {
-    mutate({ ...data, image: data.image[0] });
+    const image = typeof data.image === "string" ? data.image : data.image[0];
+
+    if (isEditingSession)
+      editApartment({ newApartmentData: { ...data, image }, id: editId });
+    else createApartment({ ...data, image: image });
   }
 
   // Monitoring error during form submission. Add to second arg of onSubmit
@@ -54,7 +75,7 @@ function ApartmentCreatingForm({ apartmentToEditing = {} }) {
         <Input
           type="text"
           id="name"
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("name", {
             required: "This field is required",
           })}
@@ -65,7 +86,7 @@ function ApartmentCreatingForm({ apartmentToEditing = {} }) {
         <Input
           type="number"
           id="maxCapacity"
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("maxCapacity", {
             required: "This field is required",
             min: {
@@ -80,7 +101,7 @@ function ApartmentCreatingForm({ apartmentToEditing = {} }) {
         <Input
           type="number"
           id="regularPrice"
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("regularPrice", {
             required: "This field is required",
             min: {
@@ -95,7 +116,7 @@ function ApartmentCreatingForm({ apartmentToEditing = {} }) {
         <Input
           type="number"
           id="discount"
-          disabled={isCreating}
+          disabled={isWorking}
           defaultValue={0}
           {...register("discount", {
             required: "This field is required",
@@ -111,7 +132,7 @@ function ApartmentCreatingForm({ apartmentToEditing = {} }) {
         <Textarea
           type="text"
           id="description"
-          disabled={isCreating}
+          disabled={isWorking}
           defaultValue=""
           {...register("description", {
             required: "This field is required",
@@ -134,7 +155,7 @@ function ApartmentCreatingForm({ apartmentToEditing = {} }) {
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
-        <Button disabled={isCreating}>
+        <Button disabled={isWorking}>
           {isEditingSession ? "Edit apartment" : "Add apartment"}
         </Button>
       </FormRow>
