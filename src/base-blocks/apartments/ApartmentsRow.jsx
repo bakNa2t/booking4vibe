@@ -52,6 +52,7 @@ function ApartmentsRow({ apartment }) {
   };
 
   const [showForm, setShowForm] = useState(false);
+  const { isDeleting, deleteApartment } = useApartmentsDeleting();
 
   const {
     id: apartmentId,
@@ -61,8 +62,6 @@ function ApartmentsRow({ apartment }) {
     regularPrice,
     discount,
   } = apartment;
-
-  const { isDeleting, deleteApartment } = useApartmentsDeleting();
 
   return (
     <>
