@@ -1,16 +1,16 @@
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createEditApartment } from "../../services/apiApartments";
-
+import PropTypes from "prop-types";
 import toast from "react-hot-toast";
+
 import Input from "../../ui-blocks/Input";
 import Form from "../../ui-blocks/Form";
 import Button from "../../ui-blocks/Button";
 import FileInput from "../../ui-blocks/FileInput";
 import Textarea from "../../ui-blocks/Textarea";
 import FormRow from "../../ui-blocks/FormRow";
-
-import PropTypes from "prop-types";
+import { createEditApartment } from "../../services/apiApartments";
+import { useApartmentsCreating } from "./useApartmentsCreating";
 
 function ApartmentCreatingForm({ apartmentToEditing = {} }) {
   ApartmentCreatingForm.propTypes = {
@@ -24,21 +24,9 @@ function ApartmentCreatingForm({ apartmentToEditing = {} }) {
     defaultValues: isEditingSession ? editValues : {},
   });
   const { errors } = formState;
+  const { createApartment, isCreating } = useApartmentsCreating();
 
   const queryClient = useQueryClient();
-
-  //Create new apartment
-  const { mutate: createApartment, isLoading: isCreating } = useMutation({
-    mutationFn: createEditApartment,
-    onSuccess: () => {
-      toast.success("New apartment created successfully");
-      queryClient.invalidateQueries({
-        queryKey: ["apartments"],
-      });
-      reset();
-    },
-    onError: (err) => toast.error(err.message),
-  });
 
   //Edit existing apartment
   const { mutate: editApartment, isLoading: isEditing } = useMutation({
@@ -61,7 +49,13 @@ function ApartmentCreatingForm({ apartmentToEditing = {} }) {
 
     if (isEditingSession)
       editApartment({ newApartmentData: { ...data, image }, id: editId });
-    else createApartment({ ...data, image: image });
+    else
+      createApartment(
+        { ...data, image: image },
+        {
+          onSuccess: () => reset(),
+        }
+      );
   }
 
   // Monitoring error during form submission. Add to second arg of onSubmit
