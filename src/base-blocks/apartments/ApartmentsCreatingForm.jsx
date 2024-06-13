@@ -124,7 +124,7 @@ function ApartmentCreatingForm({ apartmentToEditing = {} }) {
           id="image"
           accept="image/*"
           {...register("image", {
-            required: "This field is required",
+            required: isEditingSession ? false : "This field is required",
           })}
         />
       </FormRow>
