@@ -13,7 +13,6 @@ export function useApartmentsCreating() {
       queryClient.invalidateQueries({
         queryKey: ["apartments"],
       });
-      //   reset();
     },
     onError: (err) => toast.error(err.message),
   });
