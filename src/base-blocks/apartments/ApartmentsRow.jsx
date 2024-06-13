@@ -1,12 +1,10 @@
 import { formatCurrency } from "../../utils/utilsFunctions";
-import { deleteApartment } from "../../services/apiApartments";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-
-import toast from "react-hot-toast";
 import styled from "styled-components";
-import ApartmentsCreatingForm from "./ApartmentsCreatingForm";
 import PropTypes from "prop-types";
+
+import { useApartmentsDeleting } from "./useApartmentsDeleting";
+import ApartmentsCreatingForm from "./ApartmentsCreatingForm";
 
 const TableRow = styled.div`
   display: grid;
@@ -64,19 +62,7 @@ function ApartmentsRow({ apartment }) {
     discount,
   } = apartment;
 
-  const queryClient = useQueryClient();
-
-  const { isLoading: isDeleting, mutate } = useMutation({
-    mutationFn: deleteApartment,
-    onSuccess: () => {
-      toast.success("Apartment deleted successfully");
-
-      queryClient.invalidateQueries({
-        queryKey: ["apartments"],
-      });
-    },
-    onError: (err) => toast.error(err.message),
-  });
+  const { isDeleting, deleteApartment } = useApartmentsDeleting();
 
   return (
     <>
@@ -93,7 +79,10 @@ function ApartmentsRow({ apartment }) {
 
         <div>
           <button onClick={() => setShowForm(!showForm)}>Edit</button>
-          <button onClick={() => mutate(apartmentId)} disabled={isDeleting}>
+          <button
+            onClick={() => deleteApartment(apartmentId)}
+            disabled={isDeleting}
+          >
             Delete
           </button>
         </div>
