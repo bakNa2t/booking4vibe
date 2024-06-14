@@ -1,8 +1,13 @@
+import { useSettings } from "./useSettings";
 import Form from "../../ui-blocks/Form";
 import FormRow from "../../ui-blocks/FormRow";
 import Input from "../../ui-blocks/Input";
 
 function SettingsUpdatingForm() {
+  const { isLoading, settings } = useSettings();
+
+  if (isLoading || !settings) console.log(isLoading);
+
   return (
     <Form>
       <FormRow label="Minimum nights/booking">
