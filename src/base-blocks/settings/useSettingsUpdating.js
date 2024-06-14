@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 
 import { updateSetting as updateSettingApi } from "../../services/apiForSettings";
 
-export function useSettingsEditing() {
+export function useSettingsUpdating() {
   const queryClient = useQueryClient();
 
   //Edit existing apartment
