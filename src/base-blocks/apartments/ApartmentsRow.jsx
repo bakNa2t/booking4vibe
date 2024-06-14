@@ -1,9 +1,10 @@
-import { formatCurrency } from "../../utils/utilsFunctions";
 import { useState } from "react";
+import { HiPencil, HiSquare2Stack, HiTrash } from "react-icons/hi2";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import { useApartmentsDeleting } from "./useApartmentsDeleting";
+import { formatCurrency } from "../../utils/utilsFunctions";
 import ApartmentsCreatingForm from "./ApartmentsCreatingForm";
 
 const TableRow = styled.div`
@@ -77,12 +78,17 @@ function ApartmentsRow({ apartment }) {
         )}
 
         <div>
-          <button onClick={() => setShowForm(!showForm)}>Edit</button>
+          <button>
+            <HiSquare2Stack />
+          </button>
+          <button onClick={() => setShowForm(!showForm)}>
+            <HiPencil />
+          </button>
           <button
             onClick={() => deleteApartment(apartmentId)}
             disabled={isDeleting}
           >
-            Delete
+            <HiTrash />
           </button>
         </div>
       </TableRow>
