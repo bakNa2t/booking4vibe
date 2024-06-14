@@ -33,18 +33,14 @@ export async function createEditApartment(newApartment, id) {
 
   const { data, error } = await query.select().single();
 
-  // const { data, error } = await supabase
-  //   .from("apartments")
-  //   .insert({ ...newApartment, image: imagePath })
-  //   .select()
-  //   .single();
-
   if (error) {
     console.error(error);
     throw new Error("Apartment could not be created");
   }
 
   // Add new apartment image to table
+  if (hasImagePath) return data;
+
   const { error: storageError } = await supabase.storage
     .from("apartment-images")
     .upload(imageName, newApartment.image);

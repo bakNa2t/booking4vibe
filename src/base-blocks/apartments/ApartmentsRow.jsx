@@ -4,6 +4,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import { useApartmentsDeleting } from "./useApartmentsDeleting";
+import { useApartmentsCreating } from "./useApartmentsCreating";
 import { formatCurrency } from "../../utils/utilsFunctions";
 import ApartmentsCreatingForm from "./ApartmentsCreatingForm";
 
@@ -54,6 +55,7 @@ function ApartmentsRow({ apartment }) {
 
   const [showForm, setShowForm] = useState(false);
   const { isDeleting, deleteApartment } = useApartmentsDeleting();
+  const { isCreating, createApartment } = useApartmentsCreating();
 
   const {
     id: apartmentId,
@@ -62,7 +64,19 @@ function ApartmentsRow({ apartment }) {
     maxCapacity,
     regularPrice,
     discount,
+    description,
   } = apartment;
+
+  function handleDuplicateApartment() {
+    createApartment({
+      name: `Copy of ${name}`,
+      maxCapacity,
+      regularPrice,
+      discount,
+      image,
+      description,
+    });
+  }
 
   return (
     <>
@@ -78,7 +92,7 @@ function ApartmentsRow({ apartment }) {
         )}
 
         <div>
-          <button>
+          <button disabled={isCreating} onClick={handleDuplicateApartment}>
             <HiSquare2Stack />
           </button>
           <button onClick={() => setShowForm(!showForm)}>
