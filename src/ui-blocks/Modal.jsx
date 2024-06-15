@@ -48,3 +48,15 @@ const Button = styled.button`
     color: var(--color-emerald-500);
   }
 `;
+
+function Modal() {
+  return (
+    <StyledModal>
+      Modal
+      <Overlay />
+      <Button>*</Button>
+    </StyledModal>
+  );
+}
+
+export default Modal;

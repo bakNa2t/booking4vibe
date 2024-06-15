@@ -1,13 +1,9 @@
 import ApartmentsTable from "../base-blocks/apartments/ApartmentsTable";
 import Row from "../ui-blocks/Row";
 import Heading from "../ui-blocks/Heading";
-import Button from "../ui-blocks/Button";
-import { useState } from "react";
-import ApartmentsCreatingForm from "../base-blocks/apartments/ApartmentsCreatingForm";
+import ApartmentAddingByModal from "../base-blocks/apartments/ApartmentAddingByModal";
 
 function Apartments() {
-  const [showForm, setShowForm] = useState(false);
-
   return (
     <>
       <Row type="horizontal">
@@ -16,10 +12,7 @@ function Apartments() {
       </Row>
       <Row>
         <ApartmentsTable />
-        <Button onClick={() => setShowForm(!showForm)}>
-          Add new apartment
-        </Button>
-        {showForm && <ApartmentsCreatingForm />}
+        <ApartmentAddingByModal />
       </Row>
     </>
   );
