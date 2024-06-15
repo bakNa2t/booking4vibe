@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
+import { HiXMark } from "react-icons/hi2";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -49,13 +51,19 @@ const Button = styled.button`
   }
 `;
 
-function Modal() {
+function Modal({ children }) {
+  Modal.propTypes = {
+    children: PropTypes.node.isRequired,
+  };
   return (
-    <StyledModal>
-      Modal
-      <Overlay />
-      <Button>*</Button>
-    </StyledModal>
+    <Overlay>
+      <StyledModal>
+        <Button>
+          <HiXMark />
+        </Button>
+        <div>{children}</div>
+      </StyledModal>
+    </Overlay>
   );
 }
 
