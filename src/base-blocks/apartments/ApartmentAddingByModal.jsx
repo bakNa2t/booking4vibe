@@ -14,7 +14,7 @@ function ApartmentAddingByModal() {
       </Button>
       {isOpneModal && (
         <Modal onClose={() => setIsOpneModal(false)}>
-          <ApartmentsCreatingForm />
+          <ApartmentsCreatingForm onCloseModal={() => setIsOpneModal(false)} />
         </Modal>
       )}
     </div>

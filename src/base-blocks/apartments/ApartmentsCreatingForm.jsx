@@ -10,9 +10,10 @@ import FormRow from "../../ui-blocks/FormRow";
 import { useApartmentsCreating } from "./useApartmentsCreating";
 import { useApartmentsEditing } from "./useApartmentsEditing";
 
-function ApartmentCreatingForm({ apartmentToEditing = {} }) {
+function ApartmentCreatingForm({ apartmentToEditing = {}, onCloseModal }) {
   ApartmentCreatingForm.propTypes = {
     apartmentToEditing: PropTypes.object,
+    onCloseModal: PropTypes.func,
   };
   const { createApartment, isCreating } = useApartmentsCreating();
   const { editApartment, isEditing } = useApartmentsEditing();
@@ -33,14 +34,20 @@ function ApartmentCreatingForm({ apartmentToEditing = {} }) {
       editApartment(
         { newApartmentData: { ...data, image }, id: editId },
         {
-          onSuccess: () => reset(),
+          onSuccess: () => {
+            reset();
+            onCloseModal?.();
+          },
         }
       );
     else
       createApartment(
         { ...data, image: image },
         {
-          onSuccess: () => reset(),
+          onSuccess: () => {
+            reset();
+            onCloseModal?.();
+          },
         }
       );
   }
@@ -133,7 +140,11 @@ function ApartmentCreatingForm({ apartmentToEditing = {} }) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button
+          variation="secondary"
+          type="reset"
+          onClick={() => onCloseModal?.()}
+        >
           Cancel
         </Button>
         <Button disabled={isWorking}>
