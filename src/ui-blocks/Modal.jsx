@@ -75,8 +75,8 @@ function Modal({ children }) {
 
 function Open({ opens: opensWindowName, children }) {
   Open.propTypes = {
-    opens: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired,
+    opens: PropTypes.string,
+    children: PropTypes.node,
   };
 
   const { open } = useContext(ModalContext);
@@ -86,8 +86,8 @@ function Open({ opens: opensWindowName, children }) {
 
 function Window({ children, name }) {
   Window.propTypes = {
-    children: PropTypes.node.isRequired,
-    name: PropTypes.string.isRequired,
+    children: PropTypes.node,
+    name: PropTypes.string,
   };
 
   const { openName, close } = useContext(ModalContext);

@@ -7,6 +7,7 @@ import { useApartmentsCreating } from "./useApartmentsCreating";
 import { formatCurrency } from "../../utils/utilsFunctions";
 import ApartmentsCreatingForm from "./ApartmentsCreatingForm";
 import Modal from "../../ui-blocks/Modal";
+import ConfirmDelete from "../../ui-blocks/ConfirmDelete";
 
 const TableRow = styled.div`
   display: grid;
@@ -102,12 +103,18 @@ function ApartmentsRow({ apartment }) {
           <Modal.Window name="edit">
             <ApartmentsCreatingForm apartmentToEditing={apartment} />
           </Modal.Window>
-          <button
-            onClick={() => deleteApartment(apartmentId)}
-            disabled={isDeleting}
-          >
-            <HiTrash />
-          </button>
+          <Modal.Open>
+            <button>
+              <HiTrash />
+            </button>
+          </Modal.Open>
+          <Modal.Window>
+            <ConfirmDelete
+              resourceName="apartments"
+              disabled={isDeleting}
+              onConfirm={() => deleteApartment(apartmentId)}
+            />
+          </Modal.Window>
         </Modal>
       </div>
     </TableRow>
