@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { HiPencil, HiSquare2Stack, HiTrash } from "react-icons/hi2";
 import styled from "styled-components";
 import PropTypes from "prop-types";
@@ -7,6 +6,7 @@ import { useApartmentsDeleting } from "./useApartmentsDeleting";
 import { useApartmentsCreating } from "./useApartmentsCreating";
 import { formatCurrency } from "../../utils/utilsFunctions";
 import ApartmentsCreatingForm from "./ApartmentsCreatingForm";
+import Modal from "../../ui-blocks/Modal";
 
 const TableRow = styled.div`
   display: grid;
@@ -53,7 +53,6 @@ function ApartmentsRow({ apartment }) {
     apartment: PropTypes.object.isRequired,
   };
 
-  const [showForm, setShowForm] = useState(false);
   const { isDeleting, deleteApartment } = useApartmentsDeleting();
   const { isCreating, createApartment } = useApartmentsCreating();
 
@@ -79,36 +78,39 @@ function ApartmentsRow({ apartment }) {
   }
 
   return (
-    <>
-      <TableRow role="row">
-        <Img src={image} />
-        <Apartment>{name}</Apartment>
-        <div>Fits up to {maxCapacity} guests</div>
-        <Price>{formatCurrency(regularPrice)}</Price>
-        {discount ? (
-          <Discount>{formatCurrency(discount)}</Discount>
-        ) : (
-          <span>&mdash;</span>
-        )}
+    <TableRow role="row">
+      <Img src={image} />
+      <Apartment>{name}</Apartment>
+      <div>Fits up to {maxCapacity} guests</div>
+      <Price>{formatCurrency(regularPrice)}</Price>
+      {discount ? (
+        <Discount>{formatCurrency(discount)}</Discount>
+      ) : (
+        <span>&mdash;</span>
+      )}
 
-        <div>
-          <button disabled={isCreating} onClick={handleDuplicateApartment}>
-            <HiSquare2Stack />
-          </button>
-          <button onClick={() => setShowForm(!showForm)}>
-            <HiPencil />
-          </button>
+      <div>
+        <button disabled={isCreating} onClick={handleDuplicateApartment}>
+          <HiSquare2Stack />
+        </button>
+        <Modal>
+          <Modal.Open opens="edit">
+            <button>
+              <HiPencil />
+            </button>
+          </Modal.Open>
+          <Modal.Window name="edit">
+            <ApartmentsCreatingForm apartmentToEditing={apartment} />
+          </Modal.Window>
           <button
             onClick={() => deleteApartment(apartmentId)}
             disabled={isDeleting}
           >
             <HiTrash />
           </button>
-        </div>
-      </TableRow>
-
-      {showForm && <ApartmentsCreatingForm apartmentToEditing={apartment} />}
-    </>
+        </Modal>
+      </div>
+    </TableRow>
   );
 }
 
