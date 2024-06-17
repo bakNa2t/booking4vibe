@@ -95,23 +95,7 @@ function Window({ children, name }) {
     name: PropTypes.string.isRequired,
   };
 
-  const ref = useRef();
   const { openName, close } = useContext(ModalContext);
-
-  useEffect(
-    function () {
-      function handleClickOutside(e) {
-        if (ref.current && !ref.current.contains(e.target)) {
-          close();
-        }
-      }
-
-      document.addEventListener("click", handleClickOutside);
-
-      return () => document.removeEventListener("click", handleClickOutside);
-    },
-    [close]
-  );
 
   if (name !== openName) return null;
 
