@@ -18,7 +18,7 @@ const StyledFormRow = styled.div`
   }
 
   &:not(:last-child) {
-    border-bottom: 1px solid var(--color-grey-100);
+    border-bottom: 1px solid var(--color-emerald-50);
   }
 
   &:has(button) {
