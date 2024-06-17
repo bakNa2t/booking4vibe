@@ -8,19 +8,20 @@ import { formatCurrency } from "../../utils/utilsFunctions";
 import ApartmentsCreatingForm from "./ApartmentsCreatingForm";
 import Modal from "../../ui-blocks/Modal";
 import ConfirmDelete from "../../ui-blocks/ConfirmDelete";
+import Table from "../../ui-blocks/Table";
 
-const TableRow = styled.div`
-  display: grid;
-  grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
-  column-gap: 2.4rem;
-  align-items: center;
-  padding: 1.4rem 2.4rem;
-  background-color: var(--color-emerald-100);
+// const TableRow = styled.div`
+//   display: grid;
+//   grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
+//   column-gap: 2.4rem;
+//   align-items: center;
+//   padding: 1.4rem 2.4rem;
+//   background-color: var(--color-emerald-100);
 
-  &:not(:last-child) {
-    border-bottom: 1px solid var(--color-emerald-200);
-  }
-`;
+//   &:not(:last-child) {
+//     border-bottom: 1px solid var(--color-emerald-200);
+//   }
+// `;
 
 const Img = styled.img`
   display: block;
@@ -79,7 +80,7 @@ function ApartmentsRow({ apartment }) {
   }
 
   return (
-    <TableRow role="row">
+    <Table.Row>
       <Img src={image} />
       <Apartment>{name}</Apartment>
       <div>Fits up to {maxCapacity} guests</div>
@@ -103,12 +104,13 @@ function ApartmentsRow({ apartment }) {
           <Modal.Window name="edit">
             <ApartmentsCreatingForm apartmentToEditing={apartment} />
           </Modal.Window>
-          <Modal.Open>
+
+          <Modal.Open opens="delete">
             <button>
               <HiTrash />
             </button>
           </Modal.Open>
-          <Modal.Window>
+          <Modal.Window name="delete">
             <ConfirmDelete
               resourceName="apartments"
               disabled={isDeleting}
@@ -117,7 +119,7 @@ function ApartmentsRow({ apartment }) {
           </Modal.Window>
         </Modal>
       </div>
-    </TableRow>
+    </Table.Row>
   );
 }
 
