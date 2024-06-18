@@ -45,9 +45,12 @@ function ApartmentsTable() {
         <div></div>
       </Table.Header>
 
-      {apartments.map((apartment) => (
-        <ApartmentsRow key={apartment.id} apartment={apartment} />
-      ))}
+      <Table.Body
+        data={apartments}
+        render={(apartment) => (
+          <ApartmentsRow key={apartment.id} apartment={apartment} />
+        )}
+      />
     </Table>
   );
 }
