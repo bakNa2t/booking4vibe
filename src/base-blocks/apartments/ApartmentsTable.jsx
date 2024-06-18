@@ -5,6 +5,7 @@ import Spinner from "../../ui-blocks/Spinner";
 import Table from "../../ui-blocks/Table";
 
 import { useApartments } from "./useApartments";
+import MenuRow from "../../ui-blocks/MenuRow";
 
 // const Table = styled.div`
 //   border: 1px solid var(--color-emerald-200);
@@ -35,23 +36,25 @@ function ApartmentsTable() {
   if (isLoading) return <Spinner />;
 
   return (
-    <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
-      <Table.Header>
-        <div></div>
-        <div>Apartment</div>
-        <div>Capacity</div>
-        <div>Price</div>
-        <div>Discount</div>
-        <div></div>
-      </Table.Header>
+    <MenuRow>
+      <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
+        <Table.Header>
+          <div></div>
+          <div>Apartment</div>
+          <div>Capacity</div>
+          <div>Price</div>
+          <div>Discount</div>
+          <div></div>
+        </Table.Header>
 
-      <Table.Body
-        data={apartments}
-        render={(apartment) => (
-          <ApartmentsRow key={apartment.id} apartment={apartment} />
-        )}
-      />
-    </Table>
+        <Table.Body
+          data={apartments}
+          render={(apartment) => (
+            <ApartmentsRow key={apartment.id} apartment={apartment} />
+          )}
+        />
+      </Table>
+    </MenuRow>
   );
 }
 

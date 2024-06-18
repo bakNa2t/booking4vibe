@@ -9,6 +9,7 @@ import ApartmentsCreatingForm from "./ApartmentsCreatingForm";
 import Modal from "../../ui-blocks/Modal";
 import ConfirmDelete from "../../ui-blocks/ConfirmDelete";
 import Table from "../../ui-blocks/Table";
+import MenuRow from "../../ui-blocks/MenuRow";
 
 // const TableRow = styled.div`
 //   display: grid;
@@ -118,6 +119,16 @@ function ApartmentsRow({ apartment }) {
             />
           </Modal.Window>
         </Modal>
+
+        <MenuRow.Menu>
+          <MenuRow.apply.Toggle />
+
+          <MenuRow.List>
+            <MenuRow.Button>Dupl</MenuRow.Button>
+            <MenuRow.Button>Edit</MenuRow.Button>
+            <MenuRow.Button>Del</MenuRow.Button>
+          </MenuRow.List>
+        </MenuRow.Menu>
       </div>
     </Table.Row>
   );
