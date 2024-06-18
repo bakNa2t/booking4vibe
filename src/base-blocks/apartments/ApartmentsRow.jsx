@@ -124,9 +124,16 @@ function ApartmentsRow({ apartment }) {
           <MenuRow.Toggle id={apartmentId} />
 
           <MenuRow.List id={apartmentId}>
-            <MenuRow.Button>Dupl</MenuRow.Button>
-            <MenuRow.Button>Edit</MenuRow.Button>
-            <MenuRow.Button>Del</MenuRow.Button>
+            <MenuRow.Button
+              icon={<HiSquare2Stack />}
+              onClick={handleDuplicateApartment}
+            >
+              Duplicate
+            </MenuRow.Button>
+
+            <MenuRow.Button icon={<HiPencil />}>Edit</MenuRow.Button>
+
+            <MenuRow.Button icon={<HiTrash />}>Delete</MenuRow.Button>
           </MenuRow.List>
         </MenuRow.Menu>
       </div>

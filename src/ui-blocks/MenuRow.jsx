@@ -127,14 +127,26 @@ function List({ id, children }) {
   );
 }
 
-function Button({ children }) {
+function Button({ children, icon, onClick }) {
   Button.propTypes = {
+    icon: PropTypes.node,
+    onClick: PropTypes.func,
     children: PropTypes.node,
   };
 
+  const { close } = useContext(MenuRowContext);
+
+  function handleClick() {
+    onClick?.();
+    close();
+  }
+
   return (
     <li>
-      <StyledButton>{children}</StyledButton>
+      <StyledButton onClick={handleClick}>
+        {icon}
+        <span>{children}</span>
+      </StyledButton>
     </li>
   );
 }
