@@ -72,12 +72,15 @@ function MenuRow({ children }) {
     children: PropTypes.node,
   };
   const [openId, setOpenId] = useState("");
+  const [position, setPosition] = useState(null);
 
   const close = () => setOpenId("");
   const open = setOpenId;
 
   return (
-    <MenuRowContext.Provider value={{ openId, close, open }}>
+    <MenuRowContext.Provider
+      value={{ openId, close, open, position, setPosition }}
+    >
       {children}
     </MenuRowContext.Provider>
   );
@@ -88,9 +91,16 @@ function Toggle({ id }) {
     id: PropTypes.number,
   };
 
-  const { openId, open, close } = useContext(MenuRowContext);
+  const { openId, open, close, setPosition } = useContext(MenuRowContext);
 
-  function handleClick() {
+  function handleClick(e) {
+    const rect = e.target.closest("button").getBoundingClientRect();
+    // console.log(rect.x, rect.y);
+    setPosition({
+      x: window.innerWidth - rect.width - rect.x,
+      y: rect.y + rect.height + 8,
+    });
+
     openId === "" || openId !== id ? open(id) : close();
   }
 
@@ -105,13 +115,14 @@ function List({ id, children }) {
   List.propTypes = {
     id: PropTypes.number,
     children: PropTypes.node,
+    position: PropTypes.object,
   };
-  const { openId } = useContext(MenuRowContext);
+  const { openId, position } = useContext(MenuRowContext);
 
   if (openId !== id) return null;
 
   return createPortal(
-    <StyledList position={{ x: 20, y: 20 }}>{children}</StyledList>,
+    <StyledList position={position}>{children}</StyledList>,
     document.body
   );
 }
