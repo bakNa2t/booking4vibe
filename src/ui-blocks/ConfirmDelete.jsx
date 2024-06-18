@@ -22,6 +22,14 @@ const StyledConfirmDelete = styled.div`
   }
 `;
 
+const StyledSpan = styled.span`
+  color: var(--color-brand-800);
+  font-size: inherit;
+  font-weight: 600;
+  font-family: "Sono";
+  text-shadow: 1px 1px 2px var(--color-brand-600);
+`;
+
 function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
   ConfirmDelete.propTypes = {
     resourceName: PropTypes.string.isRequired,
@@ -32,10 +40,13 @@ function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
 
   return (
     <StyledConfirmDelete>
-      <Heading as="h3">Delete {resourceName}</Heading>
+      <Heading as="h3">
+        Delete <StyledSpan>{resourceName}</StyledSpan>
+      </Heading>
       <p>
-        Are you sure you want to delete this {resourceName} permanently? This
-        action cannot be undone.
+        Are you sure you want to delete this{" "}
+        <StyledSpan>{resourceName}</StyledSpan> permanently? This action cannot
+        be undone.
       </p>
 
       <div>

@@ -121,7 +121,7 @@ function ApartmentsRow({ apartment }) {
 
             <Modal.Window name="delete">
               <ConfirmDelete
-                resourceName="apartments"
+                resourceName={apartment.name}
                 disabled={isDeleting}
                 onConfirm={() => deleteApartment(apartmentId)}
               />
