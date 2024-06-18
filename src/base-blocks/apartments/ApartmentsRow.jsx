@@ -121,9 +121,9 @@ function ApartmentsRow({ apartment }) {
         </Modal>
 
         <MenuRow.Menu>
-          <MenuRow.apply.Toggle />
+          <MenuRow.Toggle id={apartmentId} />
 
-          <MenuRow.List>
+          <MenuRow.List id={apartmentId}>
             <MenuRow.Button>Dupl</MenuRow.Button>
             <MenuRow.Button>Edit</MenuRow.Button>
             <MenuRow.Button>Del</MenuRow.Button>
