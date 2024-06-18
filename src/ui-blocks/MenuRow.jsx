@@ -1,8 +1,10 @@
 import { createContext, useContext, useState } from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
 import { HiEllipsisVertical } from "react-icons/hi2";
 import { createPortal } from "react-dom";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+
+import { useOutsideClick } from "../hooks/useOutsideClick";
 
 const Menu = styled.div`
   display: flex;
@@ -115,14 +117,16 @@ function List({ id, children }) {
   List.propTypes = {
     id: PropTypes.number,
     children: PropTypes.node,
-    position: PropTypes.object,
   };
-  const { openId, position } = useContext(MenuRowContext);
+  const { openId, position, close } = useContext(MenuRowContext);
+  const ref = useOutsideClick(close);
 
   if (openId !== id) return null;
 
   return createPortal(
-    <StyledList position={position}>{children}</StyledList>,
+    <StyledList position={position} ref={ref}>
+      {children}
+    </StyledList>,
     document.body
   );
 }
