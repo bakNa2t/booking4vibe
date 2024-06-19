@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledSelect = styled.select`
   font-size: 1.4rem;
@@ -13,3 +14,22 @@ const StyledSelect = styled.select`
   font-weight: 500;
   box-shadow: var(--shadow-sm);
 `;
+
+function Select({ options, value }) {
+  Select.propTypes = {
+    options: PropTypes.array,
+    value: PropTypes.string,
+  };
+
+  return (
+    <StyledSelect value={value}>
+      {options.map((elem) => (
+        <option value={elem.value} key={elem.value}>
+          {elem.label}
+        </option>
+      ))}
+    </StyledSelect>
+  );
+}
+
+export default Select;
