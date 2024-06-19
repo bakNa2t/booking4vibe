@@ -42,6 +42,7 @@ function Filter({ filterField, options }) {
     options: PropTypes.array,
   };
   const [searchParams, setSearchParams] = useSearchParams();
+  const currentFilter = searchParams.get(filterField) || options[0].value;
 
   function handleClick(value) {
     searchParams.set(filterField, value);
@@ -54,6 +55,7 @@ function Filter({ filterField, options }) {
         <FilterButton
           onClick={() => handleClick(option.value)}
           key={option.value}
+          active={option.value === currentFilter ? "true" : ""}
         >
           {option.label}
         </FilterButton>
