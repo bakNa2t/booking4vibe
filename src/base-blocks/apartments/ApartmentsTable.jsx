@@ -12,6 +12,7 @@ function ApartmentsTable() {
 
   if (isLoading) return <Spinner />;
 
+  // Filter apartments by discount
   const filterValue = searchParams.get("discount") || "all";
 
   let filteredApartments;
@@ -28,6 +29,14 @@ function ApartmentsTable() {
       (apartment) => apartment.discount > 0
     );
 
+  // Sort apartments by name, price, capacity
+  const sortBy = searchParams.get("sortBy") || "startDate-asc";
+  const [sortField, sortDirection] = sortBy.split("-");
+  const modifier = sortDirection === "asc" ? 1 : -1;
+  const sortedApartments = filteredApartments.sort(
+    (a, b) => (a[sortField] - b[sortField]) * modifier
+  );
+
   return (
     <MenuRow>
       <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
@@ -41,7 +50,8 @@ function ApartmentsTable() {
         </Table.Header>
 
         <Table.Body
-          data={filteredApartments}
+          // data={filteredApartments}
+          data={sortedApartments}
           render={(apartment) => (
             <ApartmentsRow key={apartment.id} apartment={apartment} />
           )}
