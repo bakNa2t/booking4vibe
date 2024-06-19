@@ -25,7 +25,7 @@ const FilterButton = styled.button`
   font-weight: 500;
   font-size: 1.4rem;
   /* To give the same height as select */
-  padding: 0.44rem 0.8rem;
+  padding: 0.4rem 0.8rem;
   transition: all 0.3s;
 
   &:hover:not(:disabled) {
@@ -33,3 +33,15 @@ const FilterButton = styled.button`
     color: var(--color-brand-50);
   }
 `;
+
+function Filter() {
+  return (
+    <StyledFilter>
+      <FilterButton>All</FilterButton>
+      <FilterButton>No discount</FilterButton>
+      <FilterButton>With discount</FilterButton>
+    </StyledFilter>
+  );
+}
+
+export default Filter;
