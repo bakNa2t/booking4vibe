@@ -1,5 +1,3 @@
-// import styled from "styled-components";
-
 import ApartmentsRow from "./ApartmentsRow";
 import Spinner from "../../ui-blocks/Spinner";
 import Table from "../../ui-blocks/Table";
