@@ -1,10 +1,11 @@
+import { useSearchParams } from "react-router-dom";
+
 import ApartmentsRow from "./ApartmentsRow";
 import Spinner from "../../ui-blocks/Spinner";
 import Table from "../../ui-blocks/Table";
+import MenuRow from "../../ui-blocks/MenuRow";
 
 import { useApartments } from "./useApartments";
-import MenuRow from "../../ui-blocks/MenuRow";
-import { useSearchParams } from "react-router-dom";
 
 function ApartmentsTable() {
   const { isLoading, apartments } = useApartments();
