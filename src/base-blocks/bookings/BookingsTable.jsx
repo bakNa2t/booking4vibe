@@ -1,4 +1,4 @@
-// import BookingsRow from "./BookingsRow";
+import BookingsRow from "./BookingsRow";
 import Table from "../../ui-blocks/Table";
 import MenuRow from "../../ui-blocks/MenuRow";
 import Empty from "../../ui-blocks/Empty";
@@ -24,12 +24,12 @@ function BookingsTable() {
           <div></div>
         </Table.Header>
 
-        {/* <Table.Body
+        <Table.Body
           data={bookings}
           render={(booking) => (
             <BookingsRow key={booking.id} booking={booking} />
           )}
-        /> */}
+        />
       </Table>
     </MenuRow>
   );
