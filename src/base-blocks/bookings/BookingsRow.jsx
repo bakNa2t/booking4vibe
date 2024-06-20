@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { format, isToday } from "date-fns";
+import PropTypes from "prop-types";
 
 import Tag from "../../ui-blocks/Tag";
 import Table from "../../ui-blocks/Table";
@@ -36,18 +37,22 @@ const Amount = styled.div`
 
 function BookingsRow({
   booking: {
-    id: bookingId,
-    created_at,
+    // id: bookingId,
+    // created_at,
     startDate,
     endDate,
     numNights,
-    numGuests,
+    // numGuests,
     totalPrice,
     status,
     guests: { fullName: guestName, email },
     aprartments: { name: apartmentName },
   },
 }) {
+  BookingsRow.propTypes = {
+    booking: PropTypes.object,
+  };
+
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",

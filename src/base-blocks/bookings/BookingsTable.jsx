@@ -1,15 +1,18 @@
 import BookingsRow from "./BookingsRow";
 import Table from "../../ui-blocks/Table";
 import MenuRow from "../../ui-blocks/MenuRow";
+import Empty from "../../ui-blocks/Empty";
 
 function BookingsTable() {
   const bookings = [];
+
+  if (!bookings.length) return <Empty resourceName="bookings" />;
 
   return (
     <MenuRow>
       <Table columns="0.6fr 2fr 2.4fr 1.4fr 1fr 3.2rem">
         <Table.Header>
-          <div>Cabin</div>
+          <div>Apartment</div>
           <div>Guest</div>
           <div>Dates</div>
           <div>Status</div>
