@@ -2,7 +2,7 @@ import BookingsRow from "./BookingsRow";
 import Table from "../../ui-blocks/Table";
 import MenuRow from "../../ui-blocks/MenuRow";
 
-function BookingTable() {
+function BookingsTable() {
   const bookings = [];
 
   return (
@@ -28,4 +28,4 @@ function BookingTable() {
   );
 }
 
-export default BookingTable;
+export default BookingsTable;

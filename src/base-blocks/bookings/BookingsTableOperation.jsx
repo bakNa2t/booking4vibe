@@ -2,7 +2,7 @@ import SortBy from "../../ui-blocks/SortBy";
 import Filter from "../../ui-blocks/Filter";
 import TableOperations from "../../ui-blocks/TableOperations";
 
-function BookingTableOperations() {
+function BookingsTableOperations() {
   return (
     <TableOperations>
       <Filter
@@ -30,4 +30,4 @@ function BookingTableOperations() {
   );
 }
 
-export default BookingTableOperations;
+export default BookingsTableOperations;

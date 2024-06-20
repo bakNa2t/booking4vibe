@@ -7,10 +7,13 @@ import {
   HiOutlineHomeModern,
 } from "react-icons/hi2";
 
-import DataItem from "../../ui/DataItem";
-import { Flag } from "../../ui/Flag";
+import DataItem from "../../ui-blocks/DataItem";
+import { Flag } from "../../ui-blocks/Flag";
 
-import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
+import {
+  formatDistanceFromNow,
+  formatCurrency,
+} from "../../utils/utilsFunctions";
 
 const StyledBookingDataBox = styled.section`
   /* Box */
@@ -102,21 +105,21 @@ const Footer = styled.footer`
 `;
 
 // A purely presentational component
-function BookingDataBox({ booking }) {
+function BookingsDataBox({ booking }) {
   const {
     created_at,
     startDate,
     endDate,
     numNights,
     numGuests,
-    cabinPrice,
+    apartmentPrice,
     extrasPrice,
     totalPrice,
     hasBreakfast,
     observations,
     isPaid,
     guests: { fullName: guestName, email, country, countryFlag, nationalID },
-    cabins: { name: cabinName },
+    apartments: { name: apartmentName },
   } = booking;
 
   return (
@@ -125,7 +128,7 @@ function BookingDataBox({ booking }) {
         <div>
           <HiOutlineHomeModern />
           <p>
-            {numNights} nights in Cabin <span>{cabinName}</span>
+            {numNights} nights in Cabin <span>{apartmentName}</span>
           </p>
         </div>
 
@@ -168,7 +171,7 @@ function BookingDataBox({ booking }) {
             {formatCurrency(totalPrice)}
 
             {hasBreakfast &&
-              ` (${formatCurrency(cabinPrice)} cabin + ${formatCurrency(
+              ` (${formatCurrency(apartmentPrice)} cabin + ${formatCurrency(
                 extrasPrice
               )} breakfast)`}
           </DataItem>
@@ -184,4 +187,4 @@ function BookingDataBox({ booking }) {
   );
 }
 
-export default BookingDataBox;
+export default BookingsDataBox;

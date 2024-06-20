@@ -16,7 +16,7 @@ const HeadingGroup = styled.div`
   align-items: center;
 `;
 
-function BookingDetail() {
+function BookingsDetail() {
   const booking = {};
   const status = "checked-in";
 
@@ -49,4 +49,4 @@ function BookingDetail() {
   );
 }
 
-export default BookingDetail;
+export default BookingsDetail;

@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { format, isToday } from "date-fns";
 
-import Tag from "../../ui/Tag";
-import Table from "../../ui/Table";
+import Tag from "../../ui-blocks/Tag";
+import Table from "../../ui-blocks/Table";
 
-import { formatCurrency } from "../../utils/helpers";
-import { formatDistanceFromNow } from "../../utils/helpers";
+import { formatCurrency } from "../../utils/utilsFunctions";
+import { formatDistanceFromNow } from "../../utils/utilsFunctions";
 
-const Cabin = styled.div`
+const Apartment = styled.div`
   font-size: 1.6rem;
   font-weight: 600;
   color: var(--color-grey-600);
@@ -34,7 +34,7 @@ const Amount = styled.div`
   font-weight: 500;
 `;
 
-function BookingRow({
+function BookingsRow({
   booking: {
     id: bookingId,
     created_at,
@@ -45,7 +45,7 @@ function BookingRow({
     totalPrice,
     status,
     guests: { fullName: guestName, email },
-    cabins: { name: cabinName },
+    aprartments: { name: apartmentName },
   },
 }) {
   const statusToTagName = {
@@ -56,7 +56,7 @@ function BookingRow({
 
   return (
     <Table.Row>
-      <Cabin>{cabinName}</Cabin>
+      <Apartment>{apartmentName}</Apartment>
 
       <Stacked>
         <span>{guestName}</span>
@@ -83,4 +83,4 @@ function BookingRow({
   );
 }
 
-export default BookingRow;
+export default BookingsRow;
