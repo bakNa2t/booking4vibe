@@ -4,6 +4,7 @@ import ApartmentsRow from "./ApartmentsRow";
 import Spinner from "../../ui-blocks/Spinner";
 import Table from "../../ui-blocks/Table";
 import MenuRow from "../../ui-blocks/MenuRow";
+import Empty from "../../ui-blocks/Empty";
 
 import { useApartments } from "./useApartments";
 
@@ -12,6 +13,8 @@ function ApartmentsTable() {
   const [searchParams] = useSearchParams();
 
   if (isLoading) return <Spinner />;
+
+  if (!apartments.length) return <Empty resourceName={"apartments"} />;
 
   // Filter apartments by discount
   const filterValue = searchParams.get("discount") || "all";
