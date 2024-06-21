@@ -34,7 +34,7 @@ function ApartmentsTable() {
     );
 
   // Sort apartments by name, price, capacity
-  const sortBy = searchParams.get("sortBy") || "startDate-asc";
+  const sortBy = searchParams.get("sortBy") || "name-asc";
   const [sortField, sortDirection] = sortBy.split("-");
   const modifier = sortDirection === "asc" ? 1 : -1;
   const sortedApartments = filteredApartments.sort(
