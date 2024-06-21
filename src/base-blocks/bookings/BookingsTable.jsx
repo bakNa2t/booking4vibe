@@ -3,6 +3,7 @@ import Table from "../../ui-blocks/Table";
 import MenuRow from "../../ui-blocks/MenuRow";
 import Empty from "../../ui-blocks/Empty";
 import Spinner from "../../ui-blocks/Spinner";
+import Pagination from "../../ui-blocks/Pagination";
 
 import { useBookings } from "./useBookings";
 
@@ -30,6 +31,9 @@ function BookingsTable() {
             <BookingsRow key={booking.id} booking={booking} />
           )}
         />
+        <Table.Footer>
+          <Pagination />
+        </Table.Footer>
       </Table>
     </MenuRow>
   );
