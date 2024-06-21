@@ -12,7 +12,7 @@ export function useBookings() {
       ? null
       : { field: "status", value: filterValue };
 
-  // Sorting bookings by
+  // Sorting bookings by day or amount
   const sortByRaw = searchParams.get("sortBy") || "startDay-asc";
   const [field, direction] = sortByRaw.split("-");
   const sortBy = { field, direction };

@@ -7,7 +7,7 @@ const StyledPagination = styled.div`
   justify-content: space-between;
 `;
 
-const P = styled.p`
+const Paragraph = styled.p`
   font-size: 1.4rem;
   margin-left: 0.8rem;
 
@@ -55,3 +55,18 @@ const PaginationButton = styled.button`
     color: var(--color-brand-50);
   }
 `;
+
+function Pagination() {
+  return (
+    <StyledPagination>
+      <Paragraph>
+        Showing <span>1</span> to <span>10</span> of <span>23</span> results
+      </Paragraph>
+      <Buttons>
+        <PaginationButton />
+      </Buttons>
+    </StyledPagination>
+  );
+}
+
+export default Pagination;
