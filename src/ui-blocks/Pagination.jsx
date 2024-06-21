@@ -1,5 +1,7 @@
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import styled from "styled-components";
+import PropTypes from "prop-types";
+import { useSearchParams } from "react-router-dom";
 
 const StyledPagination = styled.div`
   width: 100%;
@@ -57,18 +59,48 @@ const PaginationButton = styled.button`
   }
 `;
 
-function Pagination() {
+const PAGE_SIZE = 10;
+
+function Pagination({ count }) {
+  Pagination.propTypes = {
+    count: PropTypes.number.isRequired,
+  };
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentPage = !searchParams.get("page")
+    ? 1
+    : Number(searchParams.get("page"));
+
+  const pageCount = Math.ceil(count / PAGE_SIZE);
+
+  function nextPage() {
+    const next = currentPage === pageCount ? currentPage : currentPage + 1;
+
+    searchParams.set("page", next);
+    setSearchParams(searchParams);
+  }
+  function prevPage() {
+    const prev = currentPage === 1 ? currentPage : currentPage - 1;
+
+    searchParams.set("page", prev);
+    setSearchParams(searchParams);
+  }
+  console.log(count);
+
   return (
     <StyledPagination>
       <Paragraph>
-        Showing <span>1</span> to <span>10</span> of <span>23</span> results
+        Showing <span>1</span> to <span>10</span> of <span>{count}</span>{" "}
+        results
       </Paragraph>
+
       <Buttons>
-        <PaginationButton>
+        <PaginationButton onClick={prevPage}>
           <HiChevronLeft />
           <span>Previous</span>
         </PaginationButton>
-        <PaginationButton>
+
+        <PaginationButton onClick={nextPage}>
           <span>Next</span>
           <HiChevronRight />
         </PaginationButton>
