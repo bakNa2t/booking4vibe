@@ -85,7 +85,8 @@ function Pagination({ count }) {
     searchParams.set("page", prev);
     setSearchParams(searchParams);
   }
-  console.log(count);
+
+  if (pageCount <= 1) return null;
 
   return (
     <StyledPagination>
