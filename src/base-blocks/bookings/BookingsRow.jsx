@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { format, isToday } from "date-fns";
+import { HiEye } from "react-icons/hi2";
 import PropTypes from "prop-types";
 
 import Tag from "../../ui-blocks/Tag";
 import Table from "../../ui-blocks/Table";
+import MenuRow from "../../ui-blocks/MenuRow";
 
 import { formatCurrency } from "../../utils/utilsFunctions";
 import { formatDistanceFromNow } from "../../utils/utilsFunctions";
@@ -37,7 +39,7 @@ const Amount = styled.div`
 
 function BookingsRow({
   booking: {
-    // id: bookingId,
+    id: bookingId,
     // created_at,
     startDay,
     endDay,
@@ -86,6 +88,13 @@ function BookingsRow({
       </Tag>
 
       <Amount>{formatCurrency(totalPrice)}</Amount>
+
+      <MenuRow.Menu>
+        <MenuRow.Toggle id={bookingId} />
+        <MenuRow.List id={bookingId}>
+          <MenuRow.Button icon={<HiEye />}>Details</MenuRow.Button>
+        </MenuRow.List>
+      </MenuRow.Menu>
     </Table.Row>
   );
 }
