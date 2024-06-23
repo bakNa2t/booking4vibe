@@ -31,13 +31,22 @@ export function useBookings() {
     queryFn: () => getBookings({ filter, sortBy, page }),
   });
 
-  // Pre-fetch next page
+  // Pre-fetch page
   const pageCount = Math.ceil(count / PAGE_SIZE);
 
+  // Next page
   if (page < pageCount) {
     queryClient.prefetchQuery({
       queryKey: ["bookings", filter, sortBy, page + 1],
       queryFn: () => getBookings({ filter, sortBy, page: page + 1 }),
+    });
+  }
+
+  // Previous page
+  if (page > 1) {
+    queryClient.prefetchQuery({
+      queryKey: ["bookings", filter, sortBy, page - 1],
+      queryFn: () => getBookings({ filter, sortBy, page: page - 1 }),
     });
   }
 
