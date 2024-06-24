@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import BookingsDataBox from "./BookingsDataBox";
+// import BookingsDataBox from "./BookingsDataBox";
 import Row from "../../ui-blocks/Row";
-import Heading from "../../ui-block/Heading";
+import Heading from "../../ui-blocks/Heading";
 import Tag from "../../ui-blocks/Tag";
 import ButtonBlock from "../../ui-blocks/ButtonBlock";
 import Button from "../../ui-blocks/Button";
@@ -17,7 +17,7 @@ const HeadingGroup = styled.div`
 `;
 
 function BookingsDetail() {
-  const booking = {};
+  // const booking = {};
   const status = "checked-in";
 
   const goBack = useGoBack();
@@ -38,7 +38,7 @@ function BookingsDetail() {
         <ButtonText onClick={goBack}>&larr; Back</ButtonText>
       </Row>
 
-      <BookingsDataBox booking={booking} />
+      {/* <BookingsDataBox booking={booking} /> */}
 
       <ButtonBlock>
         <Button variation="secondary" onClick={goBack}>

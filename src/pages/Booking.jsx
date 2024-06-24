@@ -1,5 +1,7 @@
+import BookingsDetail from "../base-blocks/bookings/BookingsDetail";
+
 function BookingDetail() {
-  return <div>Booking Details</div>;
+  return <BookingsDetail />;
 }
 
 export default BookingDetail;
