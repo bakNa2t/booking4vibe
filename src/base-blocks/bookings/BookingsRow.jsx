@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { format, isToday } from "date-fns";
 import { HiEye } from "react-icons/hi2";
+import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import Tag from "../../ui-blocks/Tag";
@@ -55,6 +56,8 @@ function BookingsRow({
     booking: PropTypes.object,
   };
 
+  const navigate = useNavigate();
+
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
@@ -92,7 +95,12 @@ function BookingsRow({
       <MenuRow.Menu>
         <MenuRow.Toggle id={bookingId} />
         <MenuRow.List id={bookingId}>
-          <MenuRow.Button icon={<HiEye />}>Details</MenuRow.Button>
+          <MenuRow.Button
+            icon={<HiEye />}
+            onClick={() => navigate(`/bookings/${bookingId}`)}
+          >
+            Details
+          </MenuRow.Button>
         </MenuRow.List>
       </MenuRow.Menu>
     </Table.Row>
