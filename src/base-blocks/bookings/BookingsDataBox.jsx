@@ -6,6 +6,7 @@ import {
   HiOutlineCurrencyDollar,
   HiOutlineHomeModern,
 } from "react-icons/hi2";
+import PropTypes from "prop-types";
 
 import DataItem from "../../ui-blocks/DataItem";
 import { Flag } from "../../ui-blocks/Flag";
@@ -106,12 +107,15 @@ const Footer = styled.footer`
 
 // A purely presentational component
 function BookingsDataBox({ booking }) {
+  BookingsDataBox.propTypes = {
+    booking: PropTypes.object,
+  };
   const {
     created_at,
-    startDate,
-    endDate,
-    numNights,
-    numGuests,
+    startDay,
+    endDay,
+    quantityNights,
+    quantityGuests,
     apartmentPrice,
     extrasPrice,
     totalPrice,
@@ -128,16 +132,16 @@ function BookingsDataBox({ booking }) {
         <div>
           <HiOutlineHomeModern />
           <p>
-            {numNights} nights in Cabin <span>{apartmentName}</span>
+            {quantityNights} nights in Cabin <span>{apartmentName}</span>
           </p>
         </div>
 
         <p>
-          {format(new Date(startDate), "EEE, MMM dd yyyy")} (
-          {isToday(new Date(startDate))
+          {format(new Date(startDay), "EEE, MMM dd yyyy")} (
+          {isToday(new Date(startDay))
             ? "Today"
-            : formatDistanceFromNow(startDate)}
-          ) &mdash; {format(new Date(endDate), "EEE, MMM dd yyyy")}
+            : formatDistanceFromNow(startDay)}
+          ) &mdash; {format(new Date(endDay), "EEE, MMM dd yyyy")}
         </p>
       </Header>
 
@@ -145,7 +149,8 @@ function BookingsDataBox({ booking }) {
         <Guest>
           {countryFlag && <Flag src={countryFlag} alt={`Flag of ${country}`} />}
           <p>
-            {guestName} {numGuests > 1 ? `+ ${numGuests - 1} guests` : ""}
+            {guestName}{" "}
+            {quantityGuests > 1 ? `+ ${quantityGuests - 1} guests` : ""}
           </p>
           <span>&bull;</span>
           <p>{email}</p>
