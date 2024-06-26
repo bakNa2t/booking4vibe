@@ -24,6 +24,7 @@ function BookingsDetail() {
   const goBack = useGoBack();
 
   // const { status } = booking;
+  // console.log(booking.totalPrice);
 
   const statusToTagName = {
     unconfirmed: "blue",
