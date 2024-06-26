@@ -13,6 +13,7 @@ import Settings from "./pages/Settings";
 import Account from "./pages/Account";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
+import Checkin from "./pages/Checkin";
 import AppLayout from "./ui-blocks/AppLayout";
 
 const queryClient = new QueryClient({
@@ -35,6 +36,7 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="bookings" element={<Bookings />} />
             <Route path="bookings/:bookingId" element={<Booking />} />
+            <Route path="checkin/:bookingId" element={<Checkin />} />
             <Route path="apartments" element={<Apartments />} />
             <Route path="user" element={<User />} />
             <Route path="settings" element={<Settings />} />
