@@ -3,7 +3,7 @@ import styled from "styled-components";
 import BookingsDataBox from "./BookingsDataBox";
 import Row from "../../ui-blocks/Row";
 import Heading from "../../ui-blocks/Heading";
-// import Tag from "../../ui-blocks/Tag";
+import Tag from "../../ui-blocks/Tag";
 import ButtonBlock from "../../ui-blocks/ButtonBlock";
 import Button from "../../ui-blocks/Button";
 import ButtonText from "../../ui-blocks/ButtonText";
@@ -25,13 +25,13 @@ function BookingsDetail() {
   const goBack = useGoBack();
   const navigate = useNavigate();
 
-  // const statusToTagName = {
-  //   unconfirmed: "blue",
-  //   "checked-in": "green",
-  //   "checked-out": "silver",
-  // };
-
   if (isLoading) return <Spinner />;
+
+  const statusToTagName = {
+    unconfirmed: "blue",
+    "checked-in": "green",
+    "checked-out": "silver",
+  };
 
   if (!booking) return <Empty resourceName={"booking"} />;
 
@@ -43,7 +43,7 @@ function BookingsDetail() {
       <Row type="horizontal">
         <HeadingGroup>
           <Heading as="h1">Booking #{bookingId}</Heading>
-          {/* <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag> */}
+          <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
         </HeadingGroup>
         <ButtonText onClick={goBack}>&larr; Back</ButtonText>
       </Row>
