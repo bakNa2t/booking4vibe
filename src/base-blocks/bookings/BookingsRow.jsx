@@ -39,7 +39,8 @@ const Amount = styled.div`
 `;
 
 function BookingsRow({
-  booking: {
+  booking,
+  /*booking: {
     id: bookingId,
     // created_at,
     startDay,
@@ -50,11 +51,22 @@ function BookingsRow({
     status,
     guests: { fullName: guestName, email },
     apartments: { name: apartmentName },
-  },
+  },*/
 }) {
   BookingsRow.propTypes = {
     booking: PropTypes.object,
   };
+
+  const {
+    id: bookingId,
+    startDay,
+    endDay,
+    quantityNights,
+    status,
+    totalPrice,
+    guests: { fullName: guestName, email },
+    apartments: { name: apartmentName },
+  } = booking;
 
   const navigate = useNavigate();
 
@@ -86,9 +98,7 @@ function BookingsRow({
         </span>
       </Stacked>
 
-      <Tag type={statusToTagName[status.trim()]}>
-        {status.replace("-", " ")}
-      </Tag>
+      <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
 
       <Amount>{formatCurrency(totalPrice)}</Amount>
 
