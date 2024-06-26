@@ -1,7 +1,7 @@
 import BookingsDetail from "../base-blocks/bookings/BookingsDetail";
 
-function BookingDetail() {
+function Booking() {
   return <BookingsDetail />;
 }
 
-export default BookingDetail;
+export default Booking;
