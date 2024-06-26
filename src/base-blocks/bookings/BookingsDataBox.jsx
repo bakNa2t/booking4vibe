@@ -18,15 +18,15 @@ import {
 
 const StyledBookingDataBox = styled.section`
   /* Box */
-  background-color: var(--color-grey-0);
-  border: 1px solid var(--color-grey-100);
+  background-color: var(--color-emerald-0);
+  border: 1px solid var(--color-emerald-100);
   border-radius: var(--border-radius-md);
 
   overflow: hidden;
 `;
 
 const Header = styled.header`
-  background-color: var(--color-brand-500);
+  background-color: var(--color-brand-700);
   padding: 2rem 4rem;
   color: #e0e7ff;
   font-size: 1.8rem;
