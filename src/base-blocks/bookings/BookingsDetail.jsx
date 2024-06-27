@@ -36,7 +36,6 @@ function BookingsDetail() {
   if (!booking) return <Empty resourceName={"booking"} />;
 
   const { status, id: bookingId } = booking;
-  console.log(status, bookingId);
 
   return (
     <>

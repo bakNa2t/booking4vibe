@@ -12,6 +12,7 @@ import Checkbox from "../../ui-blocks/Checkbox";
 
 import useBookingSingle from "../bookings/useBookingSingle";
 import { useGoBack } from "../../hooks/useGoBack";
+import { formatCurrency } from "../../utils/utilsFunctions";
 
 const Box = styled.div`
   background-color: var(--color-emerald-0);
@@ -29,7 +30,7 @@ function CheckinBooking() {
     function () {
       setConfirmedPaid(booking?.isPaid ?? false);
     },
-    [booking.isPaid]
+    [booking]
   );
 
   if (isLoading) return <Spinner />;
@@ -37,7 +38,7 @@ function CheckinBooking() {
   const {
     id: bookingId,
     guests,
-    //   totalPrice,
+    totalPrice,
     //   quantityGuests,
     //   hasBreakfast,
     //   quantityNights,
@@ -61,12 +62,15 @@ function CheckinBooking() {
           id="confirm"
           disabled={confirmedPaid}
         >
-          Confirmed {guests.fullName} has paid the total amount for booking
+          Confirmed {guests.fullName} has paid the total amount of{" "}
+          {formatCurrency(totalPrice)} for booking
         </Checkbox>
       </Box>
 
       <ButtonBlock>
-        <Button onClick={handleCheckin}>Check in booking #{bookingId}</Button>
+        <Button onClick={handleCheckin} disabled={!confirmedPaid}>
+          Check in booking #{bookingId}
+        </Button>
         <Button variation="secondary" onClick={goBack}>
           Back
         </Button>
