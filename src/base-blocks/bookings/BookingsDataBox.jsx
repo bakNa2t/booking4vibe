@@ -176,7 +176,7 @@ function BookingsDataBox({ booking }) {
             {formatCurrency(totalPrice)}
 
             {hasBreakfast &&
-              ` (${formatCurrency(apartmentPrice)} cabin + ${formatCurrency(
+              ` (${formatCurrency(apartmentPrice)} apartment + ${formatCurrency(
                 extrasPrice
               )} breakfast)`}
           </DataItem>
