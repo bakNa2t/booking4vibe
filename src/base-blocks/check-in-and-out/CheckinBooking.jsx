@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import BookingDataBox from "../../base-blocks/bookings/BookingsDataBox";
 
@@ -21,9 +21,16 @@ const Box = styled.div`
 `;
 
 function CheckinBooking() {
-  // const [confirmedPaid, setConfirmedPaid] = useState();
+  const [confirmedPaid, setConfirmedPaid] = useState(false);
   const { isLoading, booking } = useBookingSingle();
   const goBack = useGoBack();
+
+  useEffect(
+    function () {
+      setConfirmedPaid(booking?.isPaid ?? false);
+    },
+    [booking.isPaid]
+  );
 
   if (isLoading) return <Spinner />;
 
@@ -48,7 +55,12 @@ function CheckinBooking() {
       <BookingDataBox booking={booking} />
 
       <Box>
-        <Checkbox>
+        <Checkbox
+          checked={confirmedPaid}
+          onChange={() => setConfirmedPaid((confirm) => !confirm)}
+          id="confirm"
+          disabled={confirmedPaid}
+        >
           Confirmed {guests.fullName} has paid the total amount for booking
         </Checkbox>
       </Box>
