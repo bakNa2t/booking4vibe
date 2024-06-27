@@ -13,6 +13,7 @@ import Checkbox from "../../ui-blocks/Checkbox";
 import useBookingSingle from "../bookings/useBookingSingle";
 import { useGoBack } from "../../hooks/useGoBack";
 import { formatCurrency } from "../../utils/utilsFunctions";
+import useCheckin from "./useCheckin";
 
 const Box = styled.div`
   background-color: var(--color-emerald-0);
@@ -25,6 +26,8 @@ function CheckinBooking() {
   const [confirmedPaid, setConfirmedPaid] = useState(false);
   const { isLoading, booking } = useBookingSingle();
   const goBack = useGoBack();
+
+  const { checkin, isChecking } = useCheckin();
 
   useEffect(
     function () {
@@ -44,7 +47,10 @@ function CheckinBooking() {
     //   quantityNights,
   } = booking;
 
-  function handleCheckin() {}
+  function handleCheckin() {
+    if (!confirmedPaid) return;
+    checkin(bookingId);
+  }
 
   return (
     <>
@@ -60,7 +66,7 @@ function CheckinBooking() {
           checked={confirmedPaid}
           onChange={() => setConfirmedPaid((confirm) => !confirm)}
           id="confirm"
-          disabled={confirmedPaid}
+          disabled={confirmedPaid || isChecking}
         >
           Confirmed {guests.fullName} has paid the total amount of{" "}
           {formatCurrency(totalPrice)} for booking
@@ -68,7 +74,7 @@ function CheckinBooking() {
       </Box>
 
       <ButtonBlock>
-        <Button onClick={handleCheckin} disabled={!confirmedPaid}>
+        <Button onClick={handleCheckin} disabled={!confirmedPaid || isChecking}>
           Check in booking #{bookingId}
         </Button>
         <Button variation="secondary" onClick={goBack}>
