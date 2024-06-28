@@ -30,7 +30,7 @@ function CheckinBooking() {
   const { settings, isLoading: isLoadingSettings } = useSettings();
   const goBack = useGoBack();
 
-  const { checkin, isChecking } = useCheckin();
+  const { checkin, isCheckingIn } = useCheckin();
 
   useEffect(
     function () {
@@ -100,7 +100,7 @@ function CheckinBooking() {
           checked={confirmedPaid}
           onChange={() => setConfirmedPaid((confirm) => !confirm)}
           id="confirm"
-          disabled={confirmedPaid || isChecking}
+          disabled={confirmedPaid || isCheckingIn}
         >
           Confirmed {guests.fullName} has paid the total amount of{" "}
           {!addBreakfast
@@ -116,7 +116,10 @@ function CheckinBooking() {
       </Box>
 
       <ButtonBlock>
-        <Button onClick={handleCheckin} disabled={!confirmedPaid || isChecking}>
+        <Button
+          onClick={handleCheckin}
+          disabled={!confirmedPaid || isCheckingIn}
+        >
           Check in booking #{bookingId}
         </Button>
         <Button variation="secondary" onClick={goBack}>
