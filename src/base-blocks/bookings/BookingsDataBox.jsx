@@ -132,7 +132,7 @@ function BookingsDataBox({ booking }) {
         <div>
           <HiOutlineHomeModern />
           <p>
-            {quantityNights} nights in Cabin <span>{apartmentName}</span>
+            {quantityNights} nights in Apartment <span>{apartmentName}</span>
           </p>
         </div>
 

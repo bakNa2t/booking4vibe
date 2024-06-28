@@ -15,8 +15,8 @@ const Label = styled.span`
   font-weight: 500;
 
   & svg {
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
     color: var(--color-brand-600);
   }
 `;
