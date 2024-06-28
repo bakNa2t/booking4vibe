@@ -13,10 +13,11 @@ import Tag from "../../ui-blocks/Tag";
 import Table from "../../ui-blocks/Table";
 import MenuRow from "../../ui-blocks/MenuRow";
 import Modal from "../../ui-blocks/Modal";
-import ConfirmedDelete from "../../ui-blocks/ConfirmedDelete";
+import ConfirmDelete from "../../ui-blocks/ConfirmDelete";
 
 import { formatCurrency } from "../../utils/utilsFunctions";
 import { formatDistanceFromNow } from "../../utils/utilsFunctions";
+import { useBookingDeleting } from "./useBookingDeleting";
 import useCheckout from "../check-in-and-out/useCheckout";
 
 const Apartment = styled.div`
@@ -78,6 +79,7 @@ function BookingsRow({
 
   const navigate = useNavigate();
   const { checkout, isCheckingOut } = useCheckout();
+  const { deleteBooking, isDeleting } = useBookingDeleting();
 
   const statusToTagName = {
     unconfirmed: "blue",
@@ -148,7 +150,11 @@ function BookingsRow({
         </MenuRow.Menu>
 
         <Modal.Window name="delete">
-          <ConfirmedDelete resourceName="booking" onConfirm={() => {}} />
+          <ConfirmDelete
+            resourceName={apartmentName}
+            onConfirm={() => deleteBooking(bookingId)}
+            disabled={isDeleting}
+          />
         </Modal.Window>
       </Modal>
     </Table.Row>
