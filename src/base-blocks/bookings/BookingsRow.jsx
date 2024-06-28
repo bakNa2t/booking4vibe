@@ -10,6 +10,7 @@ import MenuRow from "../../ui-blocks/MenuRow";
 
 import { formatCurrency } from "../../utils/utilsFunctions";
 import { formatDistanceFromNow } from "../../utils/utilsFunctions";
+import useCheckout from "../check-in-and-out/useCheckout";
 
 const Apartment = styled.div`
   font-size: 1.6rem;
@@ -69,6 +70,7 @@ function BookingsRow({
   } = booking;
 
   const navigate = useNavigate();
+  const { checkout, isCheckingOut } = useCheckout();
 
   const statusToTagName = {
     unconfirmed: "blue",
@@ -122,7 +124,11 @@ function BookingsRow({
           )}
 
           {status === "checked-in" && (
-            <MenuRow.Button icon={<HiArrowUpOnSquare />} onClick={() => {}}>
+            <MenuRow.Button
+              icon={<HiArrowUpOnSquare />}
+              onClick={() => checkout(bookingId)}
+              disabled={isCheckingOut}
+            >
               Check out
             </MenuRow.Button>
           )}
