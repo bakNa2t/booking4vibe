@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 import FormLogin from "../base-blocks/authentication/FormLogin";
+import Logo from "../ui-blocks/Logo";
+import Heading from "../ui-blocks/Heading";
 
 const LoginLayout = styled.main`
   min-height: 100vh;
@@ -15,6 +17,8 @@ const LoginLayout = styled.main`
 function Login() {
   return (
     <LoginLayout>
+      <Logo />
+      <Heading as="h3">Log in to your account</Heading>
       <FormLogin />
     </LoginLayout>
   );
