@@ -1,14 +1,23 @@
 import { useState } from "react";
+
 import Button from "../../ui-blocks/Button";
 import Form from "../../ui-blocks/Form";
 import Input from "../../ui-blocks/Input";
 import FormRowVertical from "../../ui-blocks/FormRowVertical";
 
+import { login } from "../../services/apiAuth";
+
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit() {}
+  function handleSubmit(e) {
+    e.preventDeafault();
+
+    if (!email || !password) return;
+
+    login({ email, password });
+  }
 
   return (
     <Form onSubmit={handleSubmit}>
