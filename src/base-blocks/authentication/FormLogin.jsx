@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "../../ui-blocks/Button";
 import Form from "../../ui-blocks/Form";
 import Input from "../../ui-blocks/Input";
+import SpinnerSmall from "../../ui-blocks/SpinnerSmall";
 import FormRowVertical from "../../ui-blocks/FormRowVertical";
 
 import { useLogIn } from "./useLogIn";
@@ -45,7 +46,7 @@ function LoginForm() {
       </FormRowVertical>
       <FormRowVertical>
         <Button size="large" disabled={isLoading}>
-          Log in
+          {!isLoading ? "Log in" : <SpinnerSmall />}
         </Button>
       </FormRowVertical>
     </Form>

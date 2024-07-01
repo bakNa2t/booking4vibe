@@ -8,8 +8,7 @@ export function useLogIn() {
 
   const { mutate: login, isLoading } = useMutation({
     mutationFn: ({ email, password }) => loginApi({ email, password }),
-    onSuccess: (userData) => {
-      console.log("SUCCESS", userData);
+    onSuccess: () => {
       navigate("/dashboard");
     },
     onError: (error) => {
