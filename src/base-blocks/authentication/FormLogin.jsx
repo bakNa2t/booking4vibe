@@ -5,18 +5,14 @@ import Form from "../../ui-blocks/Form";
 import Input from "../../ui-blocks/Input";
 import FormRowVertical from "../../ui-blocks/FormRowVertical";
 
-import { login } from "../../services/apiAuth";
-
 function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("junior@mail.io");
+  const [password, setPassword] = useState("12345678");
 
   function handleSubmit(e) {
-    e.preventDeafault();
+    e.preventDefault();
 
     if (!email || !password) return;
-
-    login({ email, password });
   }
 
   return (
