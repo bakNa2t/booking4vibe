@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -18,8 +20,18 @@ function ProtectedRoute({ children }) {
     children: PropTypes.node,
   };
 
+  const navigate = useNavigate();
+
   // --> load the authenticated user
-  const { user, isLoading } = useGetUser();
+  const { isAuthenticated, isLoading } = useGetUser();
+
+  // --> if not authenticated, redirect to login page
+  useEffect(
+    function () {
+      if (!isAuthenticated && !isLoading) return navigate("/login");
+    },
+    [isAuthenticated, isLoading, navigate]
+  );
 
   // --> Dispaly spinner while loading
   if (isLoading)
@@ -29,12 +41,8 @@ function ProtectedRoute({ children }) {
       </FullPage>
     );
 
-  // --> if not authenticated, redirect to login page
-
   // --> if authenticated, render app's children
-  console.log(user);
-
-  return children;
+  if (isAuthenticated) return children;
 }
 
 export default ProtectedRoute;
