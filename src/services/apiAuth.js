@@ -1,5 +1,6 @@
 import supabase from "./supabase";
 
+// Log in with email and password
 export async function login({ email, password }) {
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
@@ -11,6 +12,7 @@ export async function login({ email, password }) {
   return data;
 }
 
+// Get current user during session (returns null if not logged in)
 export async function getCurrentUser() {
   const { data: session } = await supabase.auth.getSession();
   if (!session.session) return null;

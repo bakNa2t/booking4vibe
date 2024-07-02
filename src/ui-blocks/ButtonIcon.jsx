@@ -8,7 +8,7 @@ const ButtonIcon = styled.button`
   transition: all 0.2s;
 
   &:hover {
-    background-color: var(--color-grey-100);
+    background-color: var(--color-emerald-100);
   }
 
   & svg {
