@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { HiArrowRightOnRectangle } from "react-icons/hi2";
 
 import ButtonIcon from "../../ui-blocks/ButtonIcon";
+import SpinnerSmall from "../../ui-blocks/SpinnerSmall";
+
+import { useLogOut } from "./useLogOut";
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,10 +13,12 @@ const Wrapper = styled.div`
 `;
 
 function LogOut() {
+  const { logout, isLoading } = useLogOut();
+
   return (
     <Wrapper>
-      <ButtonIcon>
-        <HiArrowRightOnRectangle />
+      <ButtonIcon onClick={logout} disabled={isLoading}>
+        {!isLoading ? <HiArrowRightOnRectangle /> : <SpinnerSmall />}
       </ButtonIcon>
       <h3>Log out</h3>
     </Wrapper>
