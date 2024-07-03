@@ -1,3 +1,4 @@
+import FormUserDataUpdating from "../base-blocks/authentication/FormUserDataUpdating";
 import Heading from "../ui-blocks/Heading";
 import Row from "../ui-blocks/Row";
 
@@ -8,7 +9,7 @@ function Account() {
 
       <Row>
         <Heading as="h3">Update user data</Heading>
-        <p>Update user data form</p>
+        <FormUserDataUpdating />
       </Row>
 
       <Row>
