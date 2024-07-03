@@ -5,13 +5,22 @@ import Form from "../../ui-blocks/Form";
 import FormRow from "../../ui-blocks/FormRow";
 import Input from "../../ui-blocks/Input";
 
+import { useSignUp } from "./useSignUp";
+
 function SignupForm() {
-  const { register, formState, getValues, handleSubmit } = useForm();
+  const { signup, isLoading } = useSignUp();
+  const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
 
-  function onSubmit(data) {
-    console.log(data);
+  function onSubmit({ fullName, email, password }) {
+    signup(
+      { fullName, email, password },
+      {
+        onSettled: reset,
+      }
+    );
   }
+  console.log(isLoading);
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
