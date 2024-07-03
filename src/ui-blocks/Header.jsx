@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import LogOut from "../base-blocks/authentication/LogOut";
+import HeaderMenu from "./HeaderMenu";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -21,7 +21,7 @@ function Header() {
   return (
     <StyledHeader>
       <Title>Booking 4 Vibe</Title>
-      <LogOut />
+      <HeaderMenu />
     </StyledHeader>
   );
 }
