@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useGetUser } from "./useGetUser";
 
 const StyledAvatarUser = styled.div`
   display: flex;
@@ -21,10 +22,16 @@ const Avatar = styled.img`
 `;
 
 function AvatarUser() {
+  const { user } = useGetUser();
+  const { fullName, avatar } = user.user_metadata;
+
   return (
     <StyledAvatarUser>
-      <Avatar />
-      Avatar
+      <Avatar
+        src={avatar || "images/avatar-default.png"}
+        alt={`Avatar of ${fullName}`}
+      />
+      <span>{fullName}</span>
     </StyledAvatarUser>
   );
 }
