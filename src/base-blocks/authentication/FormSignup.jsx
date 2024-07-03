@@ -16,11 +16,10 @@ function SignupForm() {
     signup(
       { fullName, email, password },
       {
-        onSettled: reset,
+        onSettled: () => reset(),
       }
     );
   }
-  console.log(isLoading);
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -28,6 +27,7 @@ function SignupForm() {
         <Input
           type="text"
           id="fullName"
+          disabled={isLoading}
           {...register("fullName", { required: "Full name is required" })}
         />
       </FormRow>
@@ -36,6 +36,7 @@ function SignupForm() {
         <Input
           type="email"
           id="email"
+          disabled={isLoading}
           {...register("email", {
             required: "Email is required",
             pattern: {
@@ -53,6 +54,7 @@ function SignupForm() {
         <Input
           type="password"
           id="password"
+          disabled={isLoading}
           {...register("password", {
             required: "Password is required",
             minLength: {
@@ -67,6 +69,7 @@ function SignupForm() {
         <Input
           type="password"
           id="passwordConfirm"
+          disabled={isLoading}
           {...register("passwordConfirm", {
             required: "Password confirm is required",
             validate: (value) =>
@@ -80,7 +83,7 @@ function SignupForm() {
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
-        <Button>Create new user</Button>
+        <Button disabled={isLoading}>Create new user</Button>
       </FormRow>
     </Form>
   );
