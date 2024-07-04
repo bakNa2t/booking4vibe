@@ -7,6 +7,7 @@ import FormRow from "../../ui-blocks/FormRow";
 import Input from "../../ui-blocks/Input";
 
 import { useGetUser } from "./useGetUser";
+import { useUpdateUser } from "./useUpdateUser";
 
 function FormUserDataUpdating() {
   const {
@@ -16,11 +17,16 @@ function FormUserDataUpdating() {
     },
   } = useGetUser();
 
+  const { updateUser, isUpdating } = useUpdateUser();
+
   const [fullName, setFullName] = useState(currentFullName);
-  const [/*avatar,*/ setAvatar] = useState(null);
+  const [avatar, setAvatar] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (!fullName) return;
+    updateUser({ fullName, avatar });
   }
 
   return (
@@ -32,9 +38,10 @@ function FormUserDataUpdating() {
       <FormRow label="Full name">
         <Input
           type="text"
+          id="fullName"
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
-          id="fullName"
+          disabled={isUpdating}
         />
       </FormRow>
 
@@ -47,10 +54,10 @@ function FormUserDataUpdating() {
       </FormRow>
 
       <FormRow>
-        <Button type="reset" variation="secondary">
+        <Button type="reset" variation="secondary" disabled={isUpdating}>
           Cancel
         </Button>
-        <Button>Update account</Button>
+        <Button disabled={isUpdating}>Update account</Button>
       </FormRow>
     </Form>
   );
