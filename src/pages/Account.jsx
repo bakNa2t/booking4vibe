@@ -1,4 +1,5 @@
 import FormUserDataUpdating from "../base-blocks/authentication/FormUserDataUpdating";
+import FormPasswordUpdating from "../base-blocks/authentication/FormPasswordUpdating";
 import Heading from "../ui-blocks/Heading";
 import Row from "../ui-blocks/Row";
 
@@ -14,7 +15,7 @@ function Account() {
 
       <Row>
         <Heading as="h3">Update password</Heading>
-        <p>Update user password form</p>
+        <FormPasswordUpdating />
       </Row>
     </>
   );
