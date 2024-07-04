@@ -9,8 +9,10 @@ export function useUpdateUser() {
   //Edit existing apartment
   const { mutate: updateUser, isLoading: isUpdating } = useMutation({
     mutationFn: updateCurrentUser,
-    onSuccess: () => {
+    onSuccess: ({ user }) => {
       toast.success("User account updated successfully");
+      queryClient.setQueryData("user", user);
+
       queryClient.invalidateQueries({
         queryKey: ["user"],
       });
