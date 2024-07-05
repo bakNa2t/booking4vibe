@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 import Button from "../../ui-blocks/Button";
 import Form from "../../ui-blocks/Form";
@@ -7,11 +9,21 @@ import SpinnerSmall from "../../ui-blocks/SpinnerSmall";
 import FormRowVertical from "../../ui-blocks/FormRowVertical";
 
 import { useLogIn } from "./useLogIn";
+import ButtonIcon from "../../ui-blocks/ButtonIcon";
+
+const FromFooter = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0.6rem 2.4rem;
+`;
 
 function LoginForm() {
   const [email, setEmail] = useState("junior@mail.io");
   const [password, setPassword] = useState("12345678");
   const { login, isLoading } = useLogIn();
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -57,6 +69,11 @@ function LoginForm() {
           {!isLoading ? "Log in" : <SpinnerSmall />}
         </Button>
       </FormRowVertical>
+      <FromFooter>
+        <ButtonIcon onClick={() => navigate("/signup")}>
+          Don&apos;t have an account? Sign up
+        </ButtonIcon>
+      </FromFooter>
     </Form>
   );
 }

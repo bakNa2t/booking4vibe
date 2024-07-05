@@ -12,6 +12,7 @@ import User from "./pages/User";
 import Settings from "./pages/Settings";
 import Account from "./pages/Account";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import PageNotFound from "./pages/PageNotFound";
 import Checkin from "./pages/Checkin";
 import AppLayout from "./ui-blocks/AppLayout";
@@ -54,6 +55,7 @@ function App() {
             </Route>
 
             <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
