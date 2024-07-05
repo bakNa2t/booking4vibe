@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import LogOut from "../base-blocks/authentication/LogOut";
 import ButtonIcon from "./ButtonIcon";
+import DarkModeToggle from "./DarkModeToggle";
 
 const StyledHeaderMenu = styled.ul`
   display: flex;
@@ -22,6 +23,9 @@ function HeaderMenu() {
       </li>
       <li>
         <LogOut />
+      </li>
+      <li>
+        <DarkModeToggle />
       </li>
     </StyledHeaderMenu>
   );
