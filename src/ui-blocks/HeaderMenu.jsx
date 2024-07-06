@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { HiOutlineUser } from "react-icons/hi2";
+import { LuUserCog } from "react-icons/lu";
 import styled from "styled-components";
 
 import LogOut from "../base-blocks/authentication/LogOut";
@@ -18,7 +18,7 @@ function HeaderMenu() {
     <StyledHeaderMenu>
       <li>
         <ButtonIcon onClick={() => navigate("/account")}>
-          <HiOutlineUser />
+          <LuUserCog />
         </ButtonIcon>
       </li>
       <li>
