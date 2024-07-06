@@ -1,5 +1,8 @@
 import styled from "styled-components";
+
+import FormSignup from "../base-blocks/authentication/FormSignup";
 import Heading from "../ui-blocks/Heading";
+import Logo from "../ui-blocks/Logo";
 
 const SignupLayout = styled.main`
   min-height: 100vh;
@@ -14,7 +17,9 @@ const SignupLayout = styled.main`
 function Signip() {
   return (
     <SignupLayout>
-      <Heading as="h4">This page is under construction</Heading>
+      <Logo />
+      <Heading as="h4">Sign up for an account</Heading>
+      <FormSignup />
     </SignupLayout>
   );
 }
