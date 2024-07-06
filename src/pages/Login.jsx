@@ -14,7 +14,7 @@ const LoginLayout = styled.main`
   grid-template-columns: 48rem;
   align-content: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
   background-color: var(--color-emerald-50);
 `;
 
