@@ -5,6 +5,9 @@ import Heading from "../ui-blocks/Heading";
 import Logo from "../ui-blocks/Logo";
 import DarkModeToggle from "../ui-blocks/DarkModeToggle";
 import DarkModeWrapper from "../ui-blocks/DarkModeWrapper";
+import Button from "../ui-blocks/Button";
+
+import { useGoBack } from "../hooks/useGoBack";
 
 const SignupLayout = styled.main`
   min-height: 100vh;
@@ -15,9 +18,22 @@ const SignupLayout = styled.main`
   background-color: var(--color-emerald-50);
 `;
 
+const BtnBackPosition = styled.div`
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+`;
+
 function Signip() {
+  const goBack = useGoBack();
+
   return (
     <SignupLayout>
+      <BtnBackPosition>
+        <Button onClick={goBack} variation="secondary" size="small">
+          Go to Log in
+        </Button>
+      </BtnBackPosition>
       <DarkModeWrapper>
         <DarkModeToggle />
       </DarkModeWrapper>
