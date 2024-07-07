@@ -2,10 +2,11 @@ import { useGoBack } from "../hooks/useGoBack";
 
 import styled from "styled-components";
 import Heading from "../ui-blocks/Heading";
+import Button from "../ui-blocks/Button";
 
 const StyledPageNotFound = styled.main`
   height: 100vh;
-  background-color: var(--color-grey-50);
+  background-color: var(--color-emerald-50);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,8 +15,8 @@ const StyledPageNotFound = styled.main`
 
 const Box = styled.div`
   /* box */
-  background-color: var(--color-grey-0);
-  border: 1px solid var(--color-grey-100);
+  background-color: var(--color-emerald-0);
+  border: 1px solid var(--color-emerald-100);
   border-radius: var(--border-radius-md);
 
   padding: 4.8rem;
@@ -36,9 +37,9 @@ function PageNotFound() {
         <Heading as="h1">
           The page you are looking for could not be found (404)
         </Heading>
-        <button onClick={goBack} size="large">
+        <Button onClick={goBack} size="large">
           &larr; Go back
-        </button>
+        </Button>
       </Box>
     </StyledPageNotFound>
   );
