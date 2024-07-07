@@ -5,6 +5,7 @@ import FormLogin from "../base-blocks/authentication/FormLogin";
 import Logo from "../ui-blocks/Logo";
 import Heading from "../ui-blocks/Heading";
 import ButtonIcon from "../ui-blocks/ButtonIcon";
+import DarkModeWrapper from "../ui-blocks/DarkModeWrapper";
 
 import { useDarkMode } from "../context/DarkModeContetx";
 
@@ -16,13 +17,6 @@ const LoginLayout = styled.main`
   justify-content: center;
   gap: 2rem;
   background-color: var(--color-emerald-50);
-`;
-
-const DarkModeWrapper = styled.div`
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 1000;
 `;
 
 function Login() {

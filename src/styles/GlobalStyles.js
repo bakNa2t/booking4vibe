@@ -183,46 +183,6 @@ img {
   /* For dark mode */
   filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
 }
-
-/*
-  FOR DARK MODE
-  
-  --color-emerald-0: #064e3b;
-  --color-emerald-50: #065f46;
-  --color-emerald-100: #047857;
-  --color-emerald-200: #059669;
-  --color-emerald-300: #10b981;
-  --color-emerald-400: #34d399;
-  --color-emerald-500: #6ee7b7;
-  --color-emerald-600: #a7f3d0;
-  --color-emerald-700: #d1fae5;
-  --color-emerald-800: #ecfdf5;
-  --color-emerald-900: #f9fefc;
-  
-  --color-blue-100: #075985;
-  --color-blue-700: #e0f2fe;
-  --color-green-100: #166534;
-  --color-green-700: #dcfce7;
-  --color-yellow-100: #854d0e;
-  --color-yellow-700: #fef9c3;
-  --color-silver-100: #374151;
-  --color-silver-700: #f3f4f6;
-  --color-indigo-100: #3730a3;
-  --color-indigo-700: #e0e7ff;
-  
-  --color-red-100: #fee2e2;
-  --color-red-700: #b91c1c;
-  --color-red-800: #991b1b;
-  
-  --backdrop-color: rgba(0, 0, 0, 0.3);
-  
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.4);
-  
-  --image-grayscale: 10%;
-  --image-opacity: 90%;
-  */
 `;
 
 export default GlobalStyles;
