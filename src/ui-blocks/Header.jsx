@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import HeaderMenu from "./HeaderMenu";
@@ -15,8 +16,16 @@ const StyledHeader = styled.header`
 
 const Title = styled.div`
   font-size: 2.4rem;
+  padding: 0.2rem 1.6rem;
+  cursor: pointer;
   font-weight: 600;
   color: var(--color-emerald-600);
+  border-radius: var(--border-radius-sm);
+
+  &:hover {
+    color: var(--color-emerald-500);
+    background-color: var(--color-emerald-100);
+  }
 `;
 
 const HeaderMenuWrapper = styled.div`
@@ -27,9 +36,11 @@ const HeaderMenuWrapper = styled.div`
 `;
 
 function Header() {
+  const navigate = useNavigate();
+
   return (
     <StyledHeader>
-      <Title>Booking4vibe</Title>
+      <Title onClick={() => navigate("/")}>Booking4vibe</Title>
       <HeaderMenuWrapper>
         <AvatarUser />
         <HeaderMenu />
