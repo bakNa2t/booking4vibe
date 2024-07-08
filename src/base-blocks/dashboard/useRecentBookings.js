@@ -3,7 +3,7 @@ import { subDays } from "date-fns";
 import { useSearchParams } from "react-router-dom";
 import { getBookingsAfterDate } from "../../services/apiForBooking";
 
-export function useRecentBookimgs() {
+export function useRecentBookings() {
   const [searchParams] = useSearchParams();
 
   const amountDays = !searchParams.get("last")
@@ -12,9 +12,11 @@ export function useRecentBookimgs() {
 
   const queryDate = subDays(new Date(), amountDays).toISOString();
 
+  console.log(queryDate, amountDays);
+
   const { isLoading, data: bookings } = useQuery({
     queryFn: () => getBookingsAfterDate(queryDate),
-    queryKey: ["bookings", `last - ${amountDays}`],
+    queryKey: ["bookings", `last-${amountDays}`],
   });
 
   return { isLoading, bookings };
