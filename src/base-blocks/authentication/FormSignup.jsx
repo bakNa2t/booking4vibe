@@ -7,7 +7,7 @@ import Input from "../../ui-blocks/Input";
 
 import { useSignUp } from "./useSignUp";
 
-function SignupForm() {
+function FormSignup() {
   const { signup, isLoading } = useSignUp();
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
@@ -89,4 +89,4 @@ function SignupForm() {
   );
 }
 
-export default SignupForm;
+export default FormSignup;

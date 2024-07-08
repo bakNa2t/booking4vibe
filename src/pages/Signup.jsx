@@ -25,13 +25,6 @@ const BtnBackPosition = styled.div`
   left: 1rem;
 `;
 
-// const ContentWrapper = styled.div`
-//   display: flex;
-//   align-content: center;
-//   justify-content: center;
-//   gap: 1rem;
-// `;
-
 function Signip() {
   const goBack = useGoBack();
 
