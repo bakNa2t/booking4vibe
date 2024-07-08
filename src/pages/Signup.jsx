@@ -1,3 +1,4 @@
+import { MdOutlineArrowBack } from "react-icons/md";
 import styled from "styled-components";
 
 import FormSignup from "../base-blocks/authentication/FormSignup";
@@ -24,14 +25,22 @@ const BtnBackPosition = styled.div`
   left: 1rem;
 `;
 
+// const ContentWrapper = styled.div`
+//   display: flex;
+//   align-content: center;
+//   justify-content: center;
+//   gap: 1rem;
+// `;
+
 function Signip() {
   const goBack = useGoBack();
 
   return (
     <SignupLayout>
       <BtnBackPosition>
-        <Button onClick={goBack} variation="secondary" size="small">
-          Go to Log in
+        <Button onClick={goBack} variation="back" size="medium">
+          <MdOutlineArrowBack />
+          Back Log in
         </Button>
       </BtnBackPosition>
       <DarkModeWrapper>
