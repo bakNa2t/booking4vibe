@@ -22,11 +22,16 @@ const BtnShowUploader = styled.button`
   bottom: 0.4rem;
   left: 0.4rem;
   z-index: 1000;
-  border-radius: var(--border-radius-lg);
 
-  /* outline: none; */
-  /* border: none; */
-  /* background-color: var(--color-emerald-0); */
+  border-radius: var(--border-radius-lg);
+  color: var(--color-emerald-600);
+  background-color: var(--color-emerald-50);
+  border: 1px solid var(--color-emerald-600);
+
+  &:hover {
+    color: var(--color-emerald-50);
+    background-color: var(--color-emerald-500);
+  }
 `;
 
 function SideBar() {
@@ -37,7 +42,7 @@ function SideBar() {
       <Logo />
       <MainNav />
 
-      <Uploader />
+      {showUploader && <Uploader />}
       <BtnShowUploader onClick={() => setShowUploader(!showUploader)}>
         {showUploader ? <MdOutlineRemove /> : <MdOutlineAdd />}
       </BtnShowUploader>
