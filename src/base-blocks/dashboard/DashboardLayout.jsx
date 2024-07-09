@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import Spinner from "../../ui-blocks/Spinner";
+import DashboardStats from "./DashboardStats";
 
 import { useRecentBookings } from "./useRecentBookings";
 import { useRecentStays } from "./useRecentStays";
@@ -23,10 +24,11 @@ function DashboardLayout() {
 
   return (
     <StyledDashboardLayout>
-      <div>Statistics</div>
+      <DashboardStats bookings={bookings} confirmedStays={confirmedStays} />
+      {/* <div>Statistics</div>
       <div>Today&apos;s activity</div>
       <div>Chart stay duration</div>
-      <div>Chart sales</div>
+      <div>Chart sales</div> */}
     </StyledDashboardLayout>
   );
 }

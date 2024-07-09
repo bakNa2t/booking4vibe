@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledStat = styled.div`
-  background-color: var(--color-grey-0);
-  border: 1px solid var(--color-grey-100);
+  background-color: var(--color-emerald-0);
+  border: 1px solid var(--color-emerald-100);
   border-radius: var(--border-radius-md);
 
   padding: 1.6rem;
@@ -37,7 +38,7 @@ const Title = styled.h5`
   text-transform: uppercase;
   letter-spacing: 0.4px;
   font-weight: 600;
-  color: var(--color-grey-500);
+  color: var(--color-emerald-500);
 `;
 
 const Value = styled.p`
@@ -46,7 +47,14 @@ const Value = styled.p`
   font-weight: 500;
 `;
 
-function Stat({ icon, title, value, color }) {
+function DashboardStat({ icon, title, value, color }) {
+  DashboardStat.propTypes = {
+    icon: PropTypes.node,
+    title: PropTypes.string,
+    value: PropTypes.string,
+    color: PropTypes.string,
+  };
+
   return (
     <StyledStat>
       <Icon color={color}>{icon}</Icon>
@@ -56,4 +64,4 @@ function Stat({ icon, title, value, color }) {
   );
 }
 
-export default Stat;
+export default DashboardStat;
