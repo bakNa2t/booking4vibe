@@ -33,8 +33,6 @@ function DashboardStats({
     confirmedStays.reduce((acc, cur) => acc + cur.quantityNights, 0) /
     (amountDays * apartmentsCount);
 
-  console.log(amountDays, apartmentsCount);
-
   return (
     <>
       <DashboardStat
