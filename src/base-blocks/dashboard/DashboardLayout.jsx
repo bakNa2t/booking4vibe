@@ -5,6 +5,7 @@ import DashboardStats from "./DashboardStats";
 
 import { useRecentBookings } from "./useRecentBookings";
 import { useRecentStays } from "./useRecentStays";
+import { useApartments } from "../apartments/useApartments";
 
 const StyledDashboardLayout = styled.div`
   display: grid;
@@ -15,20 +16,26 @@ const StyledDashboardLayout = styled.div`
 
 function DashboardLayout() {
   const { isLoading: isLoadingBookings, bookings } = useRecentBookings();
-  const { isLoading: isLoadingStays, stays, confirmedStays } = useRecentStays();
+  const {
+    isLoading: isLoadingStays,
+    // stays,
+    confirmedStays,
+    amountDays,
+  } = useRecentStays();
 
-  if (isLoadingBookings || isLoadingStays) return <Spinner />;
+  const { apartments, isLoading: isLoadingApartments } = useApartments();
 
-  console.log(bookings);
-  console.log(stays, confirmedStays);
+  if (isLoadingBookings || isLoadingStays || isLoadingApartments)
+    return <Spinner />;
 
   return (
     <StyledDashboardLayout>
-      <DashboardStats bookings={bookings} confirmedStays={confirmedStays} />
-      {/* <div>Statistics</div>
-      <div>Today&apos;s activity</div>
-      <div>Chart stay duration</div>
-      <div>Chart sales</div> */}
+      <DashboardStats
+        bookings={bookings}
+        confirmedStays={confirmedStays}
+        amountDays={amountDays}
+        apartmentsCount={apartments.length}
+      />
     </StyledDashboardLayout>
   );
 }

@@ -51,8 +51,6 @@ function Filter({ filterField, options }) {
     setSearchParams(searchParams);
   }
 
-  console.log(typeof currentFilter, currentFilter);
-
   return (
     <StyledFilter>
       {options.map((option) => (
