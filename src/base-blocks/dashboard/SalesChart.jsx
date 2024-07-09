@@ -1,4 +1,13 @@
 import styled from "styled-components";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 import DashboardBox from "./DashboardBox";
 import Heading from "../../ui-blocks/Heading";
@@ -9,7 +18,7 @@ const StyledSalesChart = styled(DashboardBox)`
   /* Hack to change grid line colors */
   & .recharts-cartesian-grid-horizontal line,
   & .recharts-cartesian-grid-vertical line {
-    stroke: var(--color-grey-300);
+    stroke: var(--color-emerald-300);
   }
 `;
 
@@ -61,11 +70,26 @@ const colors = isDarkMode
     };
 
 function SalesChart() {
-  console.log(fakeData, colors);
+  console.log(colors);
 
   return (
     <StyledSalesChart>
       <Heading as="h2">Sales Info</Heading>
+
+      <ResponsiveContainer width={"100%"} height={300}>
+        <AreaChart data={fakeData}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey={"label"} />
+          <YAxis unit={"$"} />
+          <Tooltip />
+          <Area
+            dataKey={"totalSales"}
+            type={"monotone"}
+            stroke="#4f46e5"
+            fill="#9f40f4"
+          />
+        </AreaChart>
+      </ResponsiveContainer>
     </StyledSalesChart>
   );
 }
