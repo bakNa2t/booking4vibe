@@ -7,14 +7,16 @@ const StyledLogo = styled.div`
 `;
 
 const Img = styled.img`
-  height: 9.6rem;
+  height: 12rem;
   width: auto;
 `;
 
 function Logo() {
   const { isDarkMode } = useDarkMode();
 
-  const src = isDarkMode ? "images/b4v-logo-dark.png" : "images/b4v-logo.png";
+  const src = isDarkMode
+    ? "images/b4v-logo-night.png"
+    : "images/b4v-logo-day.png";
 
   return (
     <StyledLogo>
