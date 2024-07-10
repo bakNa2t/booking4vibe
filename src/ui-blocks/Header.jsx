@@ -15,10 +15,11 @@ const StyledHeader = styled.header`
 `;
 
 const Title = styled.div`
-  font-size: 2.4rem;
+  font-family: "Merriweather", serif;
+  font-size: 2.8rem;
   padding: 0.2rem 1.6rem;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-emerald-600);
   border-radius: var(--border-radius-sm);
 
@@ -40,7 +41,7 @@ function Header() {
 
   return (
     <StyledHeader>
-      <Title onClick={() => navigate("/")}>Booking4vibe</Title>
+      <Title onClick={() => navigate("/")}>Booking4Vibe</Title>
       <HeaderMenuWrapper>
         <AvatarUser />
         <HeaderMenu />
