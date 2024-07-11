@@ -33,7 +33,6 @@ function ActivityPerDayItem({ activity }) {
 
   const { id, status, guests, quantityNights } = activity;
 
-  console.log(id);
   return (
     <StyledActivityPerDayItem>
       {status === "unconfirmed" && <Tag type="green">Arriving</Tag>}
@@ -45,7 +44,7 @@ function ActivityPerDayItem({ activity }) {
 
       {status === "unconfirmed" && (
         <Button
-          type="small"
+          size="small"
           variation="primary"
           as={Link}
           to={`/checkin/${id}`}
@@ -53,9 +52,8 @@ function ActivityPerDayItem({ activity }) {
           Check in
         </Button>
       )}
-      {status === "checked-in" && (
-        <CheckoutButton bookingId={id}>Check out</CheckoutButton>
-      )}
+
+      {status === "checked-in" && <CheckoutButton bookingId={id} />}
     </StyledActivityPerDayItem>
   );
 }
