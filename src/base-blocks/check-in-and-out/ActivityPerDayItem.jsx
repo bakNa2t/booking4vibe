@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import Tag from "../../ui-blocks/Tag";
 import Flag from "../../ui-blocks/Flag";
 import Button from "../../ui-blocks/Button";
+import CheckoutButton from "./CheckoutButton";
 
 const StyledActivityPerDayItem = styled.li`
   display: grid;
@@ -51,6 +52,9 @@ function ActivityPerDayItem({ activity }) {
         >
           Check in
         </Button>
+      )}
+      {status === "checked-in" && (
+        <CheckoutButton bookingId={id}>Check out</CheckoutButton>
       )}
     </StyledActivityPerDayItem>
   );
