@@ -5,6 +5,7 @@ import Row from "../../ui-blocks/Row";
 import Spinner from "../../ui-blocks/Spinner";
 
 import { useActivityPerDay } from "./useActivityPerDay";
+import ActivityPerDayItem from "./ActivityPerDayItem";
 
 const StyledActivityPerDay = styled.div`
   /* Box */
@@ -42,6 +43,8 @@ const NoActivity = styled.p`
 function CheckinBookingActivityPerDay() {
   const { daysActivity, isLoading } = useActivityPerDay();
 
+  //   console.log(daysActivity);
+
   return (
     <StyledActivityPerDay>
       <Row type="horizontal">
@@ -49,7 +52,11 @@ function CheckinBookingActivityPerDay() {
       </Row>
       {!isLoading ? (
         daysActivity?.length > 0 ? (
-          <ActivityPerDayList></ActivityPerDayList>
+          <ActivityPerDayList>
+            {daysActivity.map((activity) => (
+              <ActivityPerDayItem activity={activity} key={activity.id} />
+            ))}
+          </ActivityPerDayList>
         ) : (
           <NoActivity>No activity</NoActivity>
         )

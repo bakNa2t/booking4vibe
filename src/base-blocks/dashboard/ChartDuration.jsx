@@ -150,8 +150,6 @@ function ChartDuration({ confirmedStays }) {
   const startData = isDarkMode ? startDataLight : startDataDark;
   const data = prepareData(startData, confirmedStays);
 
-  console.log(confirmedStays, data);
-
   return (
     <ChartBox>
       <Heading as="h2">Stay duration summary</Heading>
