@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 import Heading from "../../ui-blocks/Heading";
 import Row from "../../ui-blocks/Row";
+import Spinner from "../../ui-blocks/Spinner";
+
+import { useActivityPerDay } from "./useActivityPerDay";
 
 const StyledActivityPerDay = styled.div`
   /* Box */
@@ -37,13 +40,22 @@ const NoActivity = styled.p`
 `;
 
 function CheckinBookingActivityPerDay() {
+  const { daysActivity, isLoading } = useActivityPerDay();
+
   return (
     <StyledActivityPerDay>
       <Row type="horizontal">
         <Heading as="h2">Activity per day</Heading>
       </Row>
-      <ActivityPerDayList />
-      <NoActivity>No activity</NoActivity>
+      {!isLoading ? (
+        daysActivity?.length > 0 ? (
+          <ActivityPerDayList></ActivityPerDayList>
+        ) : (
+          <NoActivity>No activity</NoActivity>
+        )
+      ) : (
+        <Spinner />
+      )}
     </StyledActivityPerDay>
   );
 }
