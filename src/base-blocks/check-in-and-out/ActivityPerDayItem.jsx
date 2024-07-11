@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import Tag from "../../ui-blocks/Tag";
 import Flag from "../../ui-blocks/Flag";
+import Button from "../../ui-blocks/Button";
 
 const StyledActivityPerDayItem = styled.li`
   display: grid;
@@ -39,6 +41,17 @@ function ActivityPerDayItem({ activity }) {
       <Flag src={guests.countryFlag} alt={`Flag of ${guests.country}}`} />
       <Guest>{guests.fullName}</Guest>
       <div>{quantityNights} nights</div>
+
+      {status === "unconfirmed" && (
+        <Button
+          type="small"
+          variation="primary"
+          as={Link}
+          to={`/checkin/${id}`}
+        >
+          Check in
+        </Button>
+      )}
     </StyledActivityPerDayItem>
   );
 }
