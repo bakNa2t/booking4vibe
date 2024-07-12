@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
+import Heading from "./Heading";
 
 const StyledErrorFallback = styled.main`
   height: 100vh;
@@ -29,3 +31,20 @@ const Box = styled.div`
     color: var(--color-emerald-500);
   }
 `;
+
+function ErrorFallback({ error }) {
+  ErrorFallback.propTypes = {
+    error: PropTypes.object,
+  };
+
+  return (
+    <StyledErrorFallback>
+      <Box>
+        <Heading as="h1">There was an error</Heading>
+        <p>{error.message}</p>
+      </Box>
+    </StyledErrorFallback>
+  );
+}
+
+export default ErrorFallback;
