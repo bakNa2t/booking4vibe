@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import Heading from "./Heading";
 import GlobalStyles from "../styles/GlobalStyles";
+import Button from "./Button";
 
 const StyledErrorFallback = styled.main`
   height: 100vh;
@@ -34,9 +35,10 @@ const Box = styled.div`
   }
 `;
 
-function ErrorFallback({ error }) {
+function ErrorFallback({ error, resetErrorBoundary }) {
   ErrorFallback.propTypes = {
     error: PropTypes.object,
+    resetErrorBoundary: PropTypes.func,
   };
 
   return (
@@ -46,6 +48,9 @@ function ErrorFallback({ error }) {
         <Box>
           <Heading as="h1">There was an error</Heading>
           <p>{error.message}</p>
+          <Button size="large" onClick={resetErrorBoundary}>
+            Try again
+          </Button>
         </Box>
       </StyledErrorFallback>
     </>
