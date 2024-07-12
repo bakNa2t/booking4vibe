@@ -22,7 +22,7 @@ const ChartBox = styled.div`
   grid-column: 3 / span 2;
 
   & > *:first-child {
-    margin-bottom: 1.6rem;
+    margin-bottom: 0.5rem;
   }
 
   & .recharts-pie-label-text {
