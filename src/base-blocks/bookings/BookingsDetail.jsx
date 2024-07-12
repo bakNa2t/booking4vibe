@@ -33,14 +33,13 @@ function BookingsDetail() {
   const navigate = useNavigate();
 
   if (isLoading) return <Spinner />;
+  if (!booking) return <Empty resourceName={"booking"} />;
 
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
     "checked-out": "silver",
   };
-
-  if (!booking) return <Empty resourceName={"booking"} />;
 
   const { status, id: bookingId } = booking;
 
