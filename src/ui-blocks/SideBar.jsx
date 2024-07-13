@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MdOutlineAdd, MdOutlineRemove } from "react-icons/md";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import Logo from "./Logo";
 import MainNav from "./MainNav";
@@ -46,12 +47,19 @@ const NoticeUploader = styled.div`
   font-weight: 500;
 `;
 
+const LogoBox = styled.div`
+  cursor: pointer;
+`;
+
 function SideBar() {
   const [showUploader, setShowUploader] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <StyledSideBar>
-      <Logo />
+      <LogoBox onClick={() => navigate("/")}>
+        <Logo />
+      </LogoBox>
       <MainNav />
 
       {showUploader && <Uploader />}
