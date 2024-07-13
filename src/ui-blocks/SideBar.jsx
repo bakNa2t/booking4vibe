@@ -34,6 +34,18 @@ const BtnShowUploader = styled.button`
   }
 `;
 
+const NoticeUploader = styled.div`
+  position: fixed;
+  bottom: 0.4rem;
+  left: 3rem;
+  z-index: 1000;
+  margin: 0;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--color-emerald-600);
+  font-weight: 500;
+`;
+
 function SideBar() {
   const [showUploader, setShowUploader] = useState(false);
 
@@ -46,6 +58,9 @@ function SideBar() {
       <BtnShowUploader onClick={() => setShowUploader(!showUploader)}>
         {showUploader ? <MdOutlineRemove /> : <MdOutlineAdd />}
       </BtnShowUploader>
+      {!showUploader && (
+        <NoticeUploader>Refresh booking fake data</NoticeUploader>
+      )}
     </StyledSideBar>
   );
 }
