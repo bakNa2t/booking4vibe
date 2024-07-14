@@ -8,7 +8,10 @@ function DarkModeToggle() {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
-    <ButtonIcon onClick={toggleDarkMode}>
+    <ButtonIcon
+      onClick={toggleDarkMode}
+      innerText={isDarkMode ? "Light Theme" : "Dark Theme"}
+    >
       {isDarkMode ? <HiOutlineSun /> : <HiOutlineMoon />}
     </ButtonIcon>
   );
