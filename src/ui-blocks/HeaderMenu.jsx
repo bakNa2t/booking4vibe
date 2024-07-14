@@ -17,7 +17,10 @@ function HeaderMenu() {
   return (
     <StyledHeaderMenu>
       <li>
-        <ButtonIcon onClick={() => navigate("/account")}>
+        <ButtonIcon
+          innerText="Update account"
+          onClick={() => navigate("/account")}
+        >
           <LuUserCog />
         </ButtonIcon>
       </li>

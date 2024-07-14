@@ -9,6 +9,16 @@ const ButtonIcon = styled.button`
 
   &:hover {
     background-color: var(--color-emerald-100);
+    &::before {
+      content: "${(props) => props.innerText}";
+      color: var(--color-brand-600);
+      font-size: 1rem;
+      font-weight: 400;
+      margin-right: 0.4rem;
+      position: absolute;
+      top: 1.4rem;
+      right: 9.4rem;
+    }
   }
 
   & svg {
