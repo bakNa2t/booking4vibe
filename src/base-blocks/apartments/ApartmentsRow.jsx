@@ -57,7 +57,7 @@ function ApartmentsRow({ apartment }) {
   };
 
   const { isDeleting, deleteApartment } = useApartmentsDeleting();
-  const { /*isCreating,*/ createApartment } = useApartmentsCreating();
+  const { isCreating, createApartment } = useApartmentsCreating();
 
   const {
     id: apartmentId,
@@ -101,6 +101,7 @@ function ApartmentsRow({ apartment }) {
               <MenuRow.Button
                 icon={<HiSquare2Stack />}
                 onClick={handleDuplicateApartment}
+                disabled={isCreating}
               >
                 Duplicate
               </MenuRow.Button>
