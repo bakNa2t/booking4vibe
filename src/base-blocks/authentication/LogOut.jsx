@@ -9,7 +9,7 @@ function LogOut() {
   const { logout, isLoading } = useLogOut();
 
   return (
-    <ButtonIcon onClick={logout} disabled={isLoading}>
+    <ButtonIcon onClick={logout} disabled={isLoading} innerText="Log Out">
       {!isLoading ? <MdOutlineLogout /> : <SpinnerSmall />}
     </ButtonIcon>
   );
