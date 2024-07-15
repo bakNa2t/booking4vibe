@@ -5,7 +5,7 @@ import Input from "../../ui-blocks/Input";
 import Form from "../../ui-blocks/Form";
 import Button from "../../ui-blocks/Button";
 import FileInput from "../../ui-blocks/FileInput";
-import Textarea from "../../ui-blocks/Textarea";
+import Textarea from "../../ui-blocks/TextArea";
 import FormRow from "../../ui-blocks/FormRow";
 import { useApartmentsCreating } from "./useApartmentsCreating";
 import { useApartmentsEditing } from "./useApartmentsEditing";
