@@ -6,19 +6,24 @@ import FormRow from "../../ui-blocks/FormRow";
 import Input from "../../ui-blocks/Input";
 
 import { useSignUp } from "./useSignUp";
+import { useSignUpRegisterPage } from "./useSignUpRegisterPage";
 
 function FormSignup() {
+  const path = window.location.pathname;
   const { signup, isLoading } = useSignUp();
+  const { signupNewUser, isLoading: isLoading2 } = useSignUpRegisterPage();
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
 
   function onSubmit({ fullName, email, password }) {
-    signup(
-      { fullName, email, password },
-      {
-        onSettled: () => reset(),
-      }
-    );
+    path === "/signup"
+      ? signupNewUser({ fullName, email, password })
+      : signup(
+          { fullName, email, password },
+          {
+            onSettled: () => reset(),
+          }
+        );
   }
 
   return (
@@ -27,7 +32,7 @@ function FormSignup() {
         <Input
           type="text"
           id="fullName"
-          disabled={isLoading}
+          disabled={isLoading || isLoading2}
           {...register("fullName", { required: "Full name is required" })}
         />
       </FormRow>
@@ -36,7 +41,7 @@ function FormSignup() {
         <Input
           type="email"
           id="email"
-          disabled={isLoading}
+          disabled={isLoading || isLoading2}
           {...register("email", {
             required: "Email is required",
             pattern: {
@@ -69,7 +74,7 @@ function FormSignup() {
         <Input
           type="password"
           id="passwordConfirm"
-          disabled={isLoading}
+          disabled={isLoading || isLoading2}
           {...register("passwordConfirm", {
             required: "Password confirm is required",
             validate: (value) =>
@@ -83,7 +88,7 @@ function FormSignup() {
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
-        <Button disabled={isLoading}>Create new user</Button>
+        <Button disabled={isLoading || isLoading2}>Create new user</Button>
       </FormRow>
     </Form>
   );
