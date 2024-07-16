@@ -20,8 +20,8 @@ const FromFooter = styled.div`
 `;
 
 function LoginForm() {
-  const [email, setEmail] = useState("junior@mail.io");
-  const [password, setPassword] = useState("12345678");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { login, isLoading } = useLogIn();
   const navigate = useNavigate();
 
