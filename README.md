@@ -43,3 +43,11 @@ password: booking4
 ```
 
 click here to visit => [_**Booking4Vibe**_](https://booking4vibe.vercel.app/)
+
+<div align="center">
+    <p style="width: 500px;">
+        <a href="https://booking4vibe.vercel.app/" target="_blank" >
+            <img alt="Booking4Vibe SPA" src ="./public/images/b4v-readme.png" width="600">
+        </a>
+    </p>
+</div>
