@@ -35,4 +35,11 @@ npm run dev
 
 The development server will be running on http://localhost:5173. You can open this URL in your web browser to view the booking4vibe app.
 
+For log in, use the following credentials to log in or create a new account:
+
+```
+mail: spa@post.app
+password: booking4
+```
+
 click here to visit => [_**Booking4Vibe**_](https://booking4vibe.vercel.app/)
