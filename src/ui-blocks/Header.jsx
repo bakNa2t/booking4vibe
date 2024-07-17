@@ -15,6 +15,7 @@ const StyledHeader = styled.header`
 `;
 
 const Title = styled.div`
+  position: relative;
   font-family: "Merriweather", serif;
   font-size: 2.8rem;
   padding: 0.2rem 1.6rem;
@@ -22,10 +23,22 @@ const Title = styled.div`
   font-weight: 700;
   color: var(--color-emerald-600);
   border-radius: var(--border-radius-sm);
+  z-index: 2;
 
   &:hover {
     color: var(--color-emerald-500);
     background-color: var(--color-emerald-100);
+  }
+  &::before {
+    content: "4";
+    font-family: inherit;
+    font-size: 4.4rem;
+    position: absolute;
+    top: -1.4rem;
+    left: 12.4rem;
+    color: var(--color-brand-700);
+    transform: rotate(15deg);
+    z-index: -1;
   }
 `;
 
@@ -41,7 +54,7 @@ function Header() {
 
   return (
     <StyledHeader>
-      <Title onClick={() => navigate("/")}>Booking4Vibe</Title>
+      <Title onClick={() => navigate("/")}>Booking Vibe</Title>
       <HeaderMenuWrapper>
         <AvatarUser />
         <HeaderMenu />
