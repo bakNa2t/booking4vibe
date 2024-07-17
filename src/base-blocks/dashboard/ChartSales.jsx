@@ -16,7 +16,7 @@ import Heading from "../../ui-blocks/Heading";
 
 import { useDarkMode } from "../../context/DarkModeContetx";
 
-const StyledSalesChart = styled(DashboardBox)`
+const StyledChartSales = styled(DashboardBox)`
   grid-column: 1 / -1;
 
   /* Hack to change grid line colors */
@@ -26,8 +26,8 @@ const StyledSalesChart = styled(DashboardBox)`
   }
 `;
 
-function SalesChart({ bookings, amountDays }) {
-  SalesChart.propTypes = {
+function ChartSales({ bookings, amountDays }) {
+  ChartSales.propTypes = {
     bookings: PropTypes.array,
     amountDays: PropTypes.number,
   };
@@ -65,7 +65,7 @@ function SalesChart({ bookings, amountDays }) {
       };
 
   return (
-    <StyledSalesChart>
+    <StyledChartSales>
       <Heading as="h2">
         Sales Info from {format(allDates.at(0), "MMM dd yyyy")} &mdash;{" "}
         {format(allDates.at(-1), "MMM dd yyyy")}
@@ -105,8 +105,8 @@ function SalesChart({ bookings, amountDays }) {
           />
         </AreaChart>
       </ResponsiveContainer>
-    </StyledSalesChart>
+    </StyledChartSales>
   );
 }
 
-export default SalesChart;
+export default ChartSales;

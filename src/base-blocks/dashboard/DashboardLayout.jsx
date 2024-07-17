@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import Spinner from "../../ui-blocks/Spinner";
 import DashboardStats from "./DashboardStats";
-import SalesChart from "./SalesChart";
+import ChartSales from "./ChartSales";
 import CheckinBookingActivityPerDay from "../check-in-and-out/CheckinBookingActivityPerDay";
 import ChartDuration from "./ChartDuration";
 
@@ -40,7 +40,7 @@ function DashboardLayout() {
       />
       <CheckinBookingActivityPerDay />
       <ChartDuration confirmedStays={confirmedStays} />
-      <SalesChart bookings={bookings} amountDays={amountDays} />
+      <ChartSales bookings={bookings} amountDays={amountDays} />
     </StyledDashboardLayout>
   );
 }
