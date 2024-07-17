@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import styled from "styled-components";
 
 import Heading from "../../ui-blocks/Heading";
@@ -5,6 +6,7 @@ import Row from "../../ui-blocks/Row";
 import Spinner from "../../ui-blocks/Spinner";
 
 import { useActivityPerDay } from "./useActivityPerDay";
+import { getToday } from "../../utils/utilsFunctions";
 import ActivityPerDayItem from "./ActivityPerDayItem";
 
 const StyledActivityPerDay = styled.div`
@@ -43,12 +45,12 @@ const NoActivity = styled.p`
 function CheckinBookingActivityPerDay() {
   const { daysActivity, isLoading } = useActivityPerDay();
 
-  //   console.log(daysActivity);
-
   return (
     <StyledActivityPerDay>
       <Row type="horizontal">
-        <Heading as="h2">Activity per day</Heading>
+        <Heading as="h2">
+          Today&apos;s activity from {format(getToday(), "dd MMM yyyy")}{" "}
+        </Heading>
       </Row>
       {!isLoading ? (
         daysActivity?.length > 0 ? (

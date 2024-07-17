@@ -8,7 +8,7 @@ import DarkModeToggle from "./DarkModeToggle";
 
 const StyledHeaderMenu = styled.ul`
   display: flex;
-  gap: 0.6rem;
+  gap: 1rem;
 `;
 
 function HeaderMenu() {

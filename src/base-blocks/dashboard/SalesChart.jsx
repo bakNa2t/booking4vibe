@@ -1,3 +1,4 @@
+import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
 import styled from "styled-components";
 import {
   Area,
@@ -14,7 +15,6 @@ import DashboardBox from "./DashboardBox";
 import Heading from "../../ui-blocks/Heading";
 
 import { useDarkMode } from "../../context/DarkModeContetx";
-import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
 
 const StyledSalesChart = styled(DashboardBox)`
   grid-column: 1 / -1;
