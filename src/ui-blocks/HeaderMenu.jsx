@@ -18,7 +18,7 @@ function HeaderMenu() {
     <StyledHeaderMenu>
       <li>
         <ButtonIcon
-          innerText="Update account"
+          popuptext="Update account"
           onClick={() => navigate("/account")}
         >
           <LuUserCog />

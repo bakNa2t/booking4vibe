@@ -10,7 +10,7 @@ function DarkModeToggle() {
   return (
     <ButtonIcon
       onClick={toggleDarkMode}
-      innerText={isDarkMode ? "Light Theme" : "Dark Theme"}
+      popuptext={isDarkMode ? "Light Theme" : "Dark Theme"}
     >
       {isDarkMode ? <HiOutlineSun /> : <HiOutlineMoon />}
     </ButtonIcon>
