@@ -15,7 +15,6 @@ const ButtonIcon = styled.button`
       color: var(--color-brand-600);
       font-size: 1rem;
       font-weight: 400;
-      /* margin-right: 0.4rem; */
       position: absolute;
       top: -1rem;
       right: 50%;
