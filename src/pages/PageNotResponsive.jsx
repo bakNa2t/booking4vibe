@@ -42,7 +42,7 @@ function PageNotResponsive({ children }) {
           target="_blank"
           rel="noreferrer"
         >
-          <Button>Booking4Vibe Repo</Button>
+          <Button variation="secondary">Repo of this App</Button>
         </a>
       </StyledPageNotResponsive>
     </>
