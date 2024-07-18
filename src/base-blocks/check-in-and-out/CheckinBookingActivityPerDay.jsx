@@ -19,8 +19,10 @@ const StyledActivityPerDay = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+
   grid-column: 1 / span 2;
   padding-top: 2.4rem;
+  ${(props) => !props.daysActivity && "gap: 12rem"}
 `;
 
 const ActivityPerDayList = styled.ul`
@@ -36,10 +38,11 @@ const ActivityPerDayList = styled.ul`
 `;
 
 const NoActivity = styled.p`
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.8rem;
   font-weight: 500;
-  margin-top: 0.8rem;
 `;
 
 function CheckinBookingActivityPerDay() {
@@ -60,7 +63,7 @@ function CheckinBookingActivityPerDay() {
             ))}
           </ActivityPerDayList>
         ) : (
-          <NoActivity>No activity</NoActivity>
+          <NoActivity>No activity for today</NoActivity>
         )
       ) : (
         <Spinner />
