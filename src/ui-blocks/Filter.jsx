@@ -17,21 +17,20 @@ const FilterButton = styled.button`
   border: none;
 
   ${(props) =>
-    props.active &&
+    props.active === "true" &&
     css`
-      background-color: var(--color-brand-700);
+      background-color: var(--color-brand-800);
       color: var(--color-brand-50);
     `}
 
   border-radius: var(--border-radius-sm);
   font-weight: 500;
   font-size: 1.4rem;
-  /* To give the same height as select */
   padding: 0.4rem 0.8rem;
   transition: all 0.3s;
 
   &:hover:not(:disabled) {
-    background-color: var(--color-brand-900);
+    background-color: var(--color-brand-800);
     color: var(--color-brand-50);
   }
 `;
@@ -57,8 +56,8 @@ function Filter({ filterField, options }) {
         <FilterButton
           onClick={() => handleClick(option.value)}
           key={option.value}
-          active={option.value === currentFilter ? true : false}
-          disabled={option.value === currentFilter ? true : false}
+          active={String(option.value === currentFilter)}
+          disabled={option.value === currentFilter}
         >
           {option.label}
         </FilterButton>

@@ -143,7 +143,7 @@ function prepareData(startData, stays) {
 
 function ChartDuration({ confirmedStays }) {
   ChartDuration.propTypes = {
-    confirmedStays: PropTypes.obj,
+    confirmedStays: PropTypes.array,
   };
 
   const { isDarkMode } = useDarkMode();

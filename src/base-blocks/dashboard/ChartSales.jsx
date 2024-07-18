@@ -75,33 +75,33 @@ function ChartSales({ bookings, amountDays }) {
         <AreaChart data={dateForChart}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
-            dataKey={"label"}
+            dataKey="label"
             tick={{ fill: colors.text }}
             tickLine={{ stroke: colors.text }}
           />
           <YAxis
-            unit={"$"}
+            unit="$"
             tick={{ fill: colors.text }}
             tickLine={{ stroke: colors.text }}
           />
           <Tooltip contentStyle={{ backgroundColor: colors.background }} />
           <Area
-            dataKey={"totalSales"}
-            type={"monotone"}
+            dataKey="totalSales"
+            type="monotone"
             stroke={colors.totalSales.stroke}
             fill={colors.totalSales.fill}
             strokeWidth={2}
             name="Total Sales"
-            unit={"$"}
+            unit="$"
           />
           <Area
-            dataKey={"extrasSales"}
-            type={"monotone"}
+            dataKey="extrasSales"
+            type="monotone"
             stroke={colors.extrasSales.stroke}
             fill={colors.extrasSales.fill}
             strokeWidth={2}
             name="Extras Sales"
-            unit={"$"}
+            unit="$"
           />
         </AreaChart>
       </ResponsiveContainer>

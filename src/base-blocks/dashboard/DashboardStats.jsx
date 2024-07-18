@@ -2,7 +2,7 @@ import { HiOutlineBanknotes, HiOutlineCalendarDays } from "react-icons/hi2";
 import { HiOutlineBriefcase } from "react-icons/hi";
 import PropTypes from "prop-types";
 
-import DashboardStat from "./DashBoardStat";
+import DashboardStat from "./DashboardStat";
 
 import { formatCurrency } from "../../utils/utilsFunctions";
 
@@ -20,7 +20,7 @@ function DashboardStats({
   };
 
   // Amount of bookings to display
-  const amountBookimgs = bookings.length;
+  const amountBookings = bookings.length;
 
   // Total sum of bookings sales
   const sales = bookings.reduce((acc, cur) => acc + cur.totalPrice, 0);
@@ -39,7 +39,7 @@ function DashboardStats({
         icon={<HiOutlineBriefcase />}
         title={"Bookings"}
         color="blue"
-        value={amountBookimgs}
+        value={amountBookings}
       />
       <DashboardStat
         icon={<HiOutlineBanknotes />}

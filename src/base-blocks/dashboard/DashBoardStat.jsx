@@ -51,7 +51,7 @@ function DashboardStat({ icon, title, value, color }) {
   DashboardStat.propTypes = {
     icon: PropTypes.node,
     title: PropTypes.string,
-    value: PropTypes.string,
+    value: PropTypes.any,
     color: PropTypes.string,
   };
 
