@@ -1,8 +1,8 @@
 # Booking4Vibe (React + Vite + Supabase)
 
-## SPA project that uses the core principles of the react library and interacts with backand using the [_supabase_](https://supabase.com/).
+### SPA react project that implements a variety of advanced React techniques, such as HOCs, the _Compound Component_ pattern, _React Query_ and interacts for its backend using the [_Supabase_](https://supabase.com/).
 
-### Getting Started
+#### Getting Started
 
 To get started with this project, you will need to have Node.js and Vite installed on your machine.
 
@@ -42,6 +42,18 @@ mail: spa@post.app
 password: booking4
 ```
 
+#### Developed with:
+
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Supabase](https://supabase.com/)
+- [Styled Components](https://styled-components.com/)
+- [React Router](https://reactrouter.com/)
+- [React Query](https://react-query.tanstack.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [React Hot Toast](https://react-hot-toast.com/)
+- [Recharts](https://recharts.org/)
+
 click here to visit => [_**Booking4Vibe**_](https://booking4vibe.vercel.app/)
 
 <div align="center">
@@ -51,3 +63,5 @@ click here to visit => [_**Booking4Vibe**_](https://booking4vibe.vercel.app/)
         </a>
     </p>
 </div>
+
+Part of the Udemy course [**"The Ultimate React Course 2023: React, Redux & More"**](https://www.udemy.com/course/the-ultimate-react-course) by [Jonas Schmedtmannn](https://codingheroes.io/).
