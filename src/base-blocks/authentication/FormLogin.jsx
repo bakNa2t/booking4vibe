@@ -27,9 +27,10 @@ const InputWrapper = styled.div`
 const IconWrapper = styled.div`
   position: absolute;
   top: 50%;
-  right: 0.8rem;
+  right: 1rem;
   transform: translateY(-50%);
   cursor: pointer;
+  font-size: 1.6rem;
 `;
 
 function LoginForm() {
@@ -79,9 +80,13 @@ function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
             disabled={isLoading}
           />
-          <IconWrapper onClick={() => setIsVisiblePassword(!isVisiblePassword)}>
-            {isVisiblePassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
-          </IconWrapper>
+          {password && (
+            <IconWrapper
+              onClick={() => setIsVisiblePassword(!isVisiblePassword)}
+            >
+              {isVisiblePassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+            </IconWrapper>
+          )}
         </InputWrapper>
       </FormRowVertical>
 
