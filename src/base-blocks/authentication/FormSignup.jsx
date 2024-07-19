@@ -93,21 +93,16 @@ function FormSignup() {
       </FormRow>
 
       <FormRow label="Repeat password" error={errors?.passwordConfirm?.message}>
-        <InputWrapper>
-          <Input
-            type={isVisiblePassword ? "text" : "password"}
-            id="passwordConfirm"
-            disabled={isLoading || isLoading2}
-            {...register("passwordConfirm", {
-              required: "Password confirm is required",
-              validate: (value) =>
-                value === getValues().password || "Passwords must match",
-            })}
-          />
-          <IconWrapper onClick={() => setIsVisiblePassword(!isVisiblePassword)}>
-            {isVisiblePassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
-          </IconWrapper>
-        </InputWrapper>
+        <Input
+          type={isVisiblePassword ? "text" : "password"}
+          id="passwordConfirm"
+          disabled={isLoading || isLoading2}
+          {...register("passwordConfirm", {
+            required: "Password confirm is required",
+            validate: (value) =>
+              value === getValues().password || "Passwords must match",
+          })}
+        />
       </FormRow>
 
       <FormRow>
