@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 
 import Button from "../../ui-blocks/Button";
@@ -19,9 +20,22 @@ const FromFooter = styled.div`
   padding: 0.6rem 2.4rem;
 `;
 
+const InputWrapper = styled.div`
+  position: relative;
+`;
+
+const IconWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 0.8rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+`;
+
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const { login, isLoading } = useLogIn();
   const navigate = useNavigate();
 
@@ -54,21 +68,29 @@ function LoginForm() {
           disabled={isLoading}
         />
       </FormRowVertical>
+
       <FormRowVertical label="Password">
-        <Input
-          type="password"
-          id="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          disabled={isLoading}
-        />
+        <InputWrapper>
+          <Input
+            type={isVisiblePassword ? "text" : "password"}
+            id="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            disabled={isLoading}
+          />
+          <IconWrapper onClick={() => setIsVisiblePassword(!isVisiblePassword)}>
+            {isVisiblePassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+          </IconWrapper>
+        </InputWrapper>
       </FormRowVertical>
+
       <FormRowVertical>
         <Button size="large" disabled={isLoading}>
           {!isLoading ? "Log in" : <SpinnerSmall />}
         </Button>
       </FormRowVertical>
+
       <FromFooter>
         <ButtonIcon onClick={() => navigate("/signup")}>
           Don&apos;t have an account? Sign up
