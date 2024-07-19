@@ -1,4 +1,7 @@
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
+import styled from "styled-components";
 
 import Button from "../../ui-blocks/Button";
 import Form from "../../ui-blocks/Form";
@@ -8,8 +11,22 @@ import Input from "../../ui-blocks/Input";
 import { useSignUp } from "./useSignUp";
 import { useSignUpRegisterPage } from "./useSignUpRegisterPage";
 
+const InputWrapper = styled.div`
+  position: relative;
+`;
+
+const IconWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.4rem;
+`;
+
 function FormSignup() {
   const path = window.location.pathname;
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const { signup, isLoading } = useSignUp();
   const { signupNewUser, isLoading: isLoading2 } = useSignUpRegisterPage();
   const { register, formState, getValues, handleSubmit, reset } = useForm();
@@ -56,31 +73,41 @@ function FormSignup() {
         label="Password (min 8 characters)"
         error={errors?.password?.message}
       >
-        <Input
-          type="password"
-          id="password"
-          disabled={isLoading}
-          {...register("password", {
-            required: "Password is required",
-            minLength: {
-              value: 8,
-              message: "Password must be at least 8 characters",
-            },
-          })}
-        />
+        <InputWrapper>
+          <Input
+            type={isVisiblePassword ? "text" : "password"}
+            id="password"
+            disabled={isLoading}
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 8,
+                message: "Password must be at least 8 characters",
+              },
+            })}
+          />
+          <IconWrapper onClick={() => setIsVisiblePassword(!isVisiblePassword)}>
+            {isVisiblePassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+          </IconWrapper>
+        </InputWrapper>
       </FormRow>
 
       <FormRow label="Repeat password" error={errors?.passwordConfirm?.message}>
-        <Input
-          type="password"
-          id="passwordConfirm"
-          disabled={isLoading || isLoading2}
-          {...register("passwordConfirm", {
-            required: "Password confirm is required",
-            validate: (value) =>
-              value === getValues().password || "Passwords must match",
-          })}
-        />
+        <InputWrapper>
+          <Input
+            type={isVisiblePassword ? "text" : "password"}
+            id="passwordConfirm"
+            disabled={isLoading || isLoading2}
+            {...register("passwordConfirm", {
+              required: "Password confirm is required",
+              validate: (value) =>
+                value === getValues().password || "Passwords must match",
+            })}
+          />
+          <IconWrapper onClick={() => setIsVisiblePassword(!isVisiblePassword)}>
+            {isVisiblePassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+          </IconWrapper>
+        </InputWrapper>
       </FormRow>
 
       <FormRow>
