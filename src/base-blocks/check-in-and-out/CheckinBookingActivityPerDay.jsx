@@ -22,7 +22,7 @@ const StyledActivityPerDay = styled.div`
 
   grid-column: 1 / span 2;
   padding-top: 2.4rem;
-  ${(props) => !props.daysActivity && "gap: 12rem"}
+  ${(props) => props.daysActivity?.length > 0 && "gap: 12rem"}
 `;
 
 const ActivityPerDayList = styled.ul`
