@@ -6,8 +6,13 @@ import { useDarkMode } from "../context/DarkModeContetx";
 
 function DarkModeToggle() {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
+  const path = window.location.pathname;
 
-  return (
+  return path === "/signup" ? (
+    <ButtonIcon onClick={toggleDarkMode}>
+      {isDarkMode ? <HiOutlineSun /> : <HiOutlineMoon />}
+    </ButtonIcon>
+  ) : (
     <ButtonIcon
       onClick={toggleDarkMode}
       popuptext={isDarkMode ? "Light Theme" : "Dark Theme"}
