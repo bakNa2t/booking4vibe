@@ -9,9 +9,9 @@ import Input from "../../ui-blocks/Input";
 import SpinnerSmall from "../../ui-blocks/SpinnerSmall";
 import FormRowVertical from "../../ui-blocks/FormRowVertical";
 import WrapperIcon from "../../ui-blocks/WrapperIcon";
+import ButtonIcon from "../../ui-blocks/ButtonIcon";
 
 import { useLogIn } from "./useLogIn";
-import ButtonIcon from "../../ui-blocks/ButtonIcon";
 
 const FromFooter = styled.div`
   display: flex;

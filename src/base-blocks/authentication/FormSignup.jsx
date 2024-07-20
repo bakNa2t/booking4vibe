@@ -7,6 +7,7 @@ import Button from "../../ui-blocks/Button";
 import Form from "../../ui-blocks/Form";
 import FormRow from "../../ui-blocks/FormRow";
 import Input from "../../ui-blocks/Input";
+import WrapperIcon from "../../ui-blocks/WrapperIcon";
 
 import { useSignUp } from "./useSignUp";
 import { useSignUpRegisterPage } from "./useSignUpRegisterPage";
@@ -15,14 +16,14 @@ const InputWrapper = styled.div`
   position: relative;
 `;
 
-const IconWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  right: 1rem;
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 1.4rem;
-`;
+// const IconWrapper = styled.div`
+//   position: absolute;
+//   top: 50%;
+//   right: 1rem;
+//   transform: translateY(-50%);
+//   cursor: pointer;
+//   font-size: 1.4rem;
+// `;
 
 function FormSignup() {
   const path = window.location.pathname;
@@ -86,9 +87,12 @@ function FormSignup() {
               },
             })}
           />
-          <IconWrapper onClick={() => setIsVisiblePassword(!isVisiblePassword)}>
+          <WrapperIcon
+            fontSize="small"
+            onClick={() => setIsVisiblePassword(!isVisiblePassword)}
+          >
             {isVisiblePassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
-          </IconWrapper>
+          </WrapperIcon>
         </InputWrapper>
       </FormRow>
 
