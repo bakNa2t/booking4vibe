@@ -8,6 +8,7 @@ import Form from "../../ui-blocks/Form";
 import Input from "../../ui-blocks/Input";
 import SpinnerSmall from "../../ui-blocks/SpinnerSmall";
 import FormRowVertical from "../../ui-blocks/FormRowVertical";
+import WrapperIcon from "../../ui-blocks/WrapperIcon";
 
 import { useLogIn } from "./useLogIn";
 import ButtonIcon from "../../ui-blocks/ButtonIcon";
@@ -22,15 +23,6 @@ const FromFooter = styled.div`
 
 const InputWrapper = styled.div`
   position: relative;
-`;
-
-const IconWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  right: 1rem;
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 1.6rem;
 `;
 
 function LoginForm() {
@@ -81,11 +73,12 @@ function LoginForm() {
             disabled={isLoading}
           />
           {password && (
-            <IconWrapper
+            <WrapperIcon
+              fontSize="medium"
               onClick={() => setIsVisiblePassword(!isVisiblePassword)}
             >
               {isVisiblePassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
-            </IconWrapper>
+            </WrapperIcon>
           )}
         </InputWrapper>
       </FormRowVertical>

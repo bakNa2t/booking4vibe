@@ -1,4 +1,19 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+const fontSizes = {
+  extrasmall: css`
+    font-size: 1.2rem;
+  `,
+  small: css`
+    font-size: 1.4rem;
+  `,
+  medium: css`
+    font-size: 1.6rem;
+  `,
+  large: css`
+    font-size: 2rem;
+  `,
+};
 
 const WrapperIcon = styled.div`
   position: absolute;
@@ -6,7 +21,8 @@ const WrapperIcon = styled.div`
   right: 1rem;
   transform: translateY(-50%);
   cursor: pointer;
-  font-size: 1.6rem;
+
+  ${(props) => fontSizes[props.fontSize]}
 `;
 
 export default WrapperIcon;
