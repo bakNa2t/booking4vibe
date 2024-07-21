@@ -25,4 +25,8 @@ const WrapperIcon = styled.div`
   ${(props) => fontSizes[props.fontSize]}
 `;
 
+WrapperIcon.defaultProps = {
+  fontSize: "medium",
+};
+
 export default WrapperIcon;
