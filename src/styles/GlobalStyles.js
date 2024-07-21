@@ -30,8 +30,12 @@ const GlobalStyles = createGlobalStyle`
     --color-indigo-100: #d9cdff;
     --color-indigo-700: #6f00fe;
     /* neon carrot */
-    --color-red-100: #ffdca8;
-    --color-red-700: #c64a08;
+    --color-orange-100: #ffdca8;
+    --color-orange-700: #c64a08;
+    /* red color */ 
+    --color-red-100: #fee2e2;
+    --color-red-700: #b91c1c;
+    --color-red-800: #991b1b;
 
     --backdrop-color: rgba(255, 255, 255, 0.1);
 

@@ -56,7 +56,7 @@ function DashboardStats({
       <DashboardStat
         icon={<HiOutlineBriefcase />}
         title={"Occupancy rate"}
-        color="red"
+        color="orange"
         value={Math.round(occupation * 100) + "%"}
       />
     </>
