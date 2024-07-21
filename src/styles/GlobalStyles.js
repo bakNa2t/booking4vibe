@@ -32,7 +32,7 @@ const GlobalStyles = createGlobalStyle`
     /* neon carrot */
     --color-orange-100: #ffdca8;
     --color-orange-700: #c64a08;
-    /* red color */ 
+    /* Danger: red color */ 
     --color-red-100: #fee2e2;
     --color-red-700: #b91c1c;
     --color-red-800: #991b1b;
@@ -74,12 +74,12 @@ const GlobalStyles = createGlobalStyle`
     --color-indigo-100: #6f00fe;
     --color-indigo-700: #d9cdff;
     /* neon carrot */
-    --color-red-100: #c64a08;
-    --color-red-700: #ffdca8;
-    
-    /* --color-red-100: #fee2e2;
+    --color-orange-100: #c64a08;
+    --color-orange-700: #ffdca8;
+    /*Danger: red color*/ 
+    --color-red-100: #fee2e2;
     --color-red-700: #b91c1c;
-    --color-red-800: #991b1b; */
+    --color-red-800: #991b1b;
     
     --backdrop-color: rgba(0, 0, 0, 0.3);
     

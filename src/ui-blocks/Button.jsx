@@ -43,7 +43,8 @@ const variations = {
     background-color: var(--color-red-700);
 
     &:hover {
-      background-color: var(--color-red-800);
+      color: var(--color-red-800);
+      background-color: var(--color-red-100);
     }
   `,
   back: css`
